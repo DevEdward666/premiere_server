@@ -21,6 +21,11 @@ namespace DeliveryRoomWatcher.Parameters
             [Display(Name = "Premid")]
             public string premid { get; set; }
         }
+        public class PGetSingleMedicalRecords
+        {
+            
+            public string hospitalno { get; set; }
+        }
         public class PUpdateUserInfo
         {
             [Required]
@@ -28,12 +33,20 @@ namespace DeliveryRoomWatcher.Parameters
             [Display(Name = "Premid")]
             public string premid { get; set; }
         }
+
+        public class PUpdateLinkMedicalRecords
+        {
+          
+            public string premid { get; set; }
+            public string patno { get; set; }
+            public string status { get; set; }
+        }
         public class PAddDiagnosticAppointment
         {
             public string premid { get; set; }
             public string reason { get; set; }
-            public string proccode { get; set; }
-            public string proccost { get; set; }
+
+            public List<PAddDiagnosticAppointmentProcedure> listofprocedures { get; set; }
 
         }
         public class PAddDiagnosticAppointmentOthers
@@ -62,6 +75,7 @@ namespace DeliveryRoomWatcher.Parameters
 
             public string zipcode { get; set; }
             public string reason { get; set; }
+            public List<PAddDiagnosticAppointmentProcedure> listofprocedures { get; set; }
 
         }
         public class PAddDiagnosticAppointmentProcedure

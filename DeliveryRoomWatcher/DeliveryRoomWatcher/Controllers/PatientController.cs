@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using DeliveryRoomWatcher.Models;
 using DeliveryRoomWatcher.Parameters;
 using DeliveryRoomWatcher.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -26,12 +27,23 @@ namespace DeliveryRoomWatcher.Controllers
         public ActionResult getUserstableForApproval()
         {
             return Ok(_patients.getUserstableForApproval());
+        } 
+        [HttpPost]
+        [Route("api/users/getUserstableForMedicalRecordsLink")]
+        public ActionResult getUserstableForMedicalRecordsLink()
+        {
+            return Ok(_patients.getUserstableForMedicalRecordsLink());
         }
         [HttpPost]
         [Route("api/users/getusersinfo")]
         public ActionResult getUserInfo(PUsers.PGetUsersInfo prem)
         {
             return Ok(_patients.getUserInfo(prem));
+        }  [HttpPost]
+        [Route("api/users/getmedicalrecordsList")]
+        public ActionResult getmedicalrecordsList(PUsers.PGetSingleMedicalRecords prem)
+        {
+            return Ok(_patients.getmedicalrecordsList(prem));
         }
         [HttpPost]
         [Route("api/users/approveuser")]
@@ -41,6 +53,13 @@ namespace DeliveryRoomWatcher.Controllers
             return Ok(_patients.UpdateUser(prem));
         }
         [HttpPost]
+        [Route("api/users/UpdateMedicalRecordsLink")]
+        public ActionResult UpdateMedicalRecordsLink(PUsers.PUpdateLinkMedicalRecords prem)
+        {
+
+            return Ok(_patients.UpdateMedicalRecordsLink(prem));
+        }     
+        [HttpPost]
         [Route("api/users/addDiagnosticAppointment")]
         public ActionResult addDiagnosticAppointment(PUsers.PAddDiagnosticAppointment prem)
         {
@@ -49,10 +68,10 @@ namespace DeliveryRoomWatcher.Controllers
         }   
         [HttpPost]
         [Route("api/users/addDiagnosticAppointmentothers")]
-        public ActionResult addDiagnosticAppointmentothers(PUsers.PAddDiagnosticAppointmentOthers prem)
+        public ActionResult addDiagnosticAppointmentothers(PUsers.PAddDiagnosticAppointmentOthers app)
         {
 
-            return Ok(_patients.addDiagnosticAppointmentothers(prem));
+            return Ok(_patients.addDiagnosticAppointmentothers(app));
         }     
            
         [HttpPost]
@@ -61,7 +80,28 @@ namespace DeliveryRoomWatcher.Controllers
         {
 
             return Ok(_patients.addDiagnosticProcedure(prem));
-        }     
+        }          
+        [HttpPost]
+        [Route("api/users/InsertLinkRequest")]
+        public ActionResult InsertLinkRequest(mdlLinkReq.request req)
+        {
+
+            return Ok(_patients.InsertLinkRequest(req));
+        }
+        [HttpPost]
+        [Route("api/users/SyncFile")]
+        public ActionResult SyncFile(mdlPatientFiles.insertfile prem)
+        {
+
+            return Ok(_patients.SyncFile(prem));
+        }
+        [HttpPost]
+        [Route("api/users/getpatientfiles")]
+        public ActionResult getpatientfiles(mdlPatientFiles.getfile prem)
+        {
+
+            return Ok(_patients.getpatientfiles(prem));
+        }
 
         [HttpPost]
         [Route("api/users/deactivate")]

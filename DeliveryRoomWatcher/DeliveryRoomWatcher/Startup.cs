@@ -1,4 +1,5 @@
 using DeliveryRoomWatcher.Config;
+using DeliveryRoomWatcher.Hubs;
 using DeliveryRoomWatcher.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,11 +21,21 @@ namespace DeliveryRoomWatcher
         }
 
         public IConfiguration Configuration { get; }
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy(name: MyAllowSpecificOrigins,
+            //                      builder =>
+            //                      {
+            //                          builder.WithOrigins("http://localhost:4000").AllowAnyMethod().AllowAnyHeader();
+            //                      });
+            //});
             services.AddCors();
             services.InstallServicesInAssembly(Configuration);
+            services.AddSignalR();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -33,9 +44,12 @@ namespace DeliveryRoomWatcher
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors(
-     options => options.WithOrigins("http://localhost:3000").AllowAnyMethod()
- );
+            app.UseCors(builder => builder
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .SetIsOriginAllowed((host) => true)
+                  .AllowCredentials()
+              );
 
 
             var swaggerConfig = new SwaggerConfig();
@@ -73,6 +87,8 @@ namespace DeliveryRoomWatcher
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<MessageHub>("/message");
+                endpoints.MapHub<NotifyHub>("/notify");
                 endpoints.MapControllers();
             });
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DeliveryRoomWatcher.Models;
 using DeliveryRoomWatcher.Parameters;
 using DeliveryRoomWatcher.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -66,6 +67,24 @@ namespace DeliveryRoomWatcher.Controllers
         public ActionResult getProcedures()
         {
             return Ok(_default.getProcedures());
+        } 
+        [HttpPost]
+        [Route("api/default/insertNotifications")]
+        public ActionResult insertNotifications(mdlNotifications.createnotifications notifications)
+        {
+            return Ok(_default.insertNotifications(notifications));
+        } 
+        [HttpPost]
+        [Route("api/default/getnotications")]
+        public ActionResult getnotications(mdlNotifications notifications)
+        {
+            return Ok(_default.getnotications(notifications));
+        }  
+        [HttpPost]
+        [Route("api/default/getnoticationsAdmin")]
+        public ActionResult getnoticationsAdmin(mdlNotifications.searchNotif notifications)
+        {
+            return Ok(_default.getnoticationsAdmin(notifications));
         }
     }
 }

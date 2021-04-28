@@ -50,7 +50,8 @@ namespace DeliveryRoomWatcher.Repositories
 
                 }
             }
-        }
+        } 
+ 
         public ResponseModel InserNewUser(PAddNewUsers user_info)
         {
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
@@ -72,9 +73,9 @@ namespace DeliveryRoomWatcher.Repositories
 
                             if (insert_user_information >= 0)
                             {
-                                int insert_user_cred = con.Execute($@"INSERT INTO prem_usermaster(fullname,email,username,PASSWORD,activated,active,creaateddate)
+                                int insert_user_cred = con.Execute($@"INSERT INTO prem_usermaster(fullname,email,username,PASSWORD,pin,activated,active,creaateddate)
                                                                     VALUES(CONCAT(@lastname,',',@firstname,' ',@middlename),@email,@username,
-                                                                    AES_ENCRYPT(@password,@username),'N','false',NOW())",
+                                                                    AES_ENCRYPT(@password,@username),@pin,'N','false',NOW())",
                                                                       user_info, transaction: tran);
 
                                 if (insert_user_cred >= 0)
@@ -212,6 +213,54 @@ namespace DeliveryRoomWatcher.Repositories
 
                 }
             }
+        }  
+        public ResponseModel updatelockeduser(mdlLocked username)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                    
+                            
+                                int insert_user_otp = con.Execute($@"UPDATE prem_usermaster SET isLocked=@islocked WHERE username=@username",
+                                                       username, transaction: tran);
+                                if (insert_user_otp >= 0)
+                                {
+                                    tran.Commit();
+                                    return new ResponseModel
+                                    {
+                                        success = true,
+                                        message = "Updated"
+                                    };
+
+                                }
+                                else
+                                {
+                                    return new ResponseModel
+                                    {
+                                        success = false,
+                                        message = "Error! Insert usermaster Failed."
+                                    };
+                                }
+                    
+                      
+
+                       
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
         }
         public ResponseModel getUserInfo(PGetUsername username)
         {
@@ -223,7 +272,7 @@ namespace DeliveryRoomWatcher.Repositories
                     try
                     {
                         var data = con.QuerySingle(
-                                        $@"SELECT * FROM prem_usersinfo where username= @username
+                                        $@"SELECT pu.*,pum.pin,pum.isLocked FROM prem_usersinfo pu JOIN prem_usermaster pum ON pu.prem_id=pum.prem_id where pu.username= @username
                                         ",
                           username, transaction: tran
                             );
@@ -246,6 +295,37 @@ namespace DeliveryRoomWatcher.Repositories
                 }
             }
 
+        }
+        public ResponseModel getuserpin(PGetUsername username)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.QuerySingleOrDefault($@"SELECT pin FROM prem_usermaster WHERE username=@username", username, transaction: tran);
+                
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+
+
+                }
+            }
         }
         public ResponseModel getUserMobile(PGetUsername username)
         {

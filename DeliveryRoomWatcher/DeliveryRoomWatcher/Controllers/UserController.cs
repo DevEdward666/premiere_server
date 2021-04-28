@@ -166,6 +166,12 @@ namespace DeliveryRoomWatcher.Controllers
         {
             return Ok(_user.getUserInfo(username));
         }
+        [HttpPost]
+        [Route("api/user/getuserpin")]
+        public ActionResult getuserpin(PGetUsername username)
+        {
+            return Ok(_user.getuserpin(username));
+        }
          
         [HttpPost]
         [Route("api/user/getUsernameExist")]
@@ -188,6 +194,13 @@ namespace DeliveryRoomWatcher.Controllers
         {
           
             return Ok(_user.InserNewOTP(addotp));
+        }      
+        [HttpPost]
+        [Route("api/user/updatelockeduser")]
+        public ActionResult updatelockeduser(mdlLocked username)
+        {
+          
+            return Ok(_user.updatelockeduser(username));
         }
 
         [HttpPost]

@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using DeliveryRoomWatcher.Config;
+using DeliveryRoomWatcher.Models;
 using DeliveryRoomWatcher.Models.Common;
 using DeliveryRoomWatcher.Parameters;
 using MySql.Data.MySqlClient;
@@ -253,6 +254,144 @@ namespace DeliveryRoomWatcher.Repositories
                 }
             }
 
+        }
+        public ResponseModel getnotications(mdlNotifications notifications)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT * FROM prem_notifications WHERE audience='all' OR audience=@name", notifications, transaction: tran);
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }  
+        public ResponseModel getnoticationsAdmin(mdlNotifications notifications)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT * FROM prem_notifications", notifications, transaction: tran);
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }
+        public ResponseModel getnoticationsAdmin(mdlNotifications.searchNotif notifications)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT * FROM prem_notifications where title LIKE concat('%',@title,'%') or priority=@priority LIMIT @offset ", notifications, transaction: tran);
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }
+        public ResponseModel insertNotifications(mdlNotifications.createnotifications notifications)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+
+
+                        int insert_user_otp = con.Execute($@"INSERT INTO prem_notifications (title,body,priority,audience,createdBy) values(@title,@body,@priority,@audience,@created_by) ",
+                                               notifications, transaction: tran);
+                        if (insert_user_otp >= 0)
+                        {
+                            tran.Commit();
+                            return new ResponseModel
+                            {
+                                success = true,
+                                message = "Updated"
+                            };
+
+                        }
+                        else
+                        {
+                            return new ResponseModel
+                            {
+                                success = false,
+                                message = "Error! Insert usermaster Failed."
+                            };
+                        }
+
+
+
+
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
         }
     }
 }

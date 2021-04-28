@@ -24,6 +24,7 @@ namespace DeliveryRoomWatcher.Parameters
         public string email { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+        public string pin { get; set; }
         public string mobileno { get; set; }
         public string region_code { get; set; }
         public string city_code { get; set; }
@@ -38,6 +39,12 @@ namespace DeliveryRoomWatcher.Parameters
         public string zipcode { get; set; }
 
 
+    }
+    public class mdlLocked
+    {
+        
+        public string username { get; set; }
+        public string islocked { get; set; }
     }
     public class PGetUsername
     {
