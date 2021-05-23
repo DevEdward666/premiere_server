@@ -10,6 +10,8 @@ namespace DeliveryRoomWatcher.Parameters
         public class PGetNews
         {
             public short offset { get; set; }
+            public short month { get; set; }
+            public short year { get; set; }
         }
         public class PGetNewsInfo
         {

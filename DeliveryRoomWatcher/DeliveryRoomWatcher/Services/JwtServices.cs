@@ -32,7 +32,7 @@ namespace DeliveryRoomWatcher.Services
                     ValidAudience = jwtTokenConfig.Audience,
                     ValidateAudience = true,
                     ValidateLifetime = true,
-                    ClockSkew = TimeSpan.FromMinutes(1)
+                    ClockSkew = TimeSpan.FromDays(360)
                 };
             });
             services.AddSingleton<IJwtAuthManager, JwtAuthManager>();

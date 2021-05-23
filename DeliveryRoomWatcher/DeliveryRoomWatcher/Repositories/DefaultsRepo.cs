@@ -264,7 +264,7 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
-                        var data = con.Query($@"SELECT * FROM prem_notifications WHERE audience='all' OR audience=@name", notifications, transaction: tran);
+                        var data = con.Query($@"SELECT * FROM prem_notifications WHERE audience='all' OR audience=@name ORDER BY createadAt DESC LIMIT @offset", notifications, transaction: tran);
 
                         return new ResponseModel
                         {
@@ -324,7 +324,7 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
-                        var data = con.Query($@"SELECT * FROM prem_notifications where title LIKE concat('%',@title,'%') or priority=@priority LIMIT @offset ", notifications, transaction: tran);
+                        var data = con.Query($@"SELECT * FROM prem_notifications where title LIKE concat('%',@title,'%') or priority=@priority ORDER BY createadAt DESC LIMIT @offset  ", notifications, transaction: tran);
 
                         return new ResponseModel
                         {

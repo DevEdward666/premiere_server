@@ -131,7 +131,7 @@ namespace DeliveryRoomWatcher.Repositories
                             return new ResponseModel
                             {
                                 success = true,
-                                message = "The events inserted sucessfully."
+                                message = "The events updated sucessfully."
                             };
 
                         }
@@ -162,7 +162,7 @@ namespace DeliveryRoomWatcher.Repositories
             }
 
         }
-        public ResponseModel getEvents()
+        public ResponseModel getEvents(PEvents.searchableDate date)
             {
                 using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
                 {
@@ -171,8 +171,8 @@ namespace DeliveryRoomWatcher.Repositories
                     {
                         try
                         {
-                            var data = con.Query($@"SELECT evid,evtitle,evdesc,evimage,DATE_FORMAT(evstartdate,'%Y-%m-%d') AS datestart,evstarttime, DATE_FORMAT(evenddate,'%Y-%m-%d') AS dateend,evendtime,evcolor,eventts,evstatus FROM prem_events",
-                               transaction: tran
+                            var data = con.Query($@"SELECT evid,evtitle,evdesc,evimage,DATE_FORMAT(evstartdate,'%Y-%m-%d') AS datestart,evstarttime, DATE_FORMAT(evenddate,'%Y-%m-%d') AS dateend,evendtime,evcolor,eventts,evstatus FROM prem_events  WHERE DATE_FORMAT(evstartdate, '%Y-%m-%d') = @searchdate",
+                               date, transaction: tran
                                 );
 
                             return new ResponseModel
@@ -194,6 +194,102 @@ namespace DeliveryRoomWatcher.Repositories
                 }
 
             }
+        public ResponseModel getEventsBymonth(PEvents.PEventByMonth month)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT * FROM prem_events WHERE YEAR(DATE(evstartdate))=@year AND MONTH(DATE(evstartdate))=@month",
+                           month, transaction: tran
+                            );
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }
+        public ResponseModel getEventsthisweek()
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT * FROM prem_events   WHERE  evstartdate >= CURDATE() - INTERVAL DAYOFWEEK(CURDATE())+6 DAY ",
+                            transaction: tran
+                            );
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        } 
+        public ResponseModel getEventsthisday()
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT * FROM prem_events WHERE evstartdate=CURDATE()",
+                            transaction: tran
+                            );
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }
         public ResponseModel getEventInfo(PEvents.PGetEvent events)
         {
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))

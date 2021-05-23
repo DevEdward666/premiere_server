@@ -99,7 +99,16 @@ namespace DeliveryRoomWatcher.Parameters
             [Display(Name = "EventColor")]
             public string evcolor { get; set; }
         }
+        public class PEventByMonth
+        {
+            public string month { get; set; }
+            public string year { get; set; }
 
+        }
+        public class searchableDate { 
+        
+        public string searchdate { get; set; }
+        }
 
-    }
+        }
 }
