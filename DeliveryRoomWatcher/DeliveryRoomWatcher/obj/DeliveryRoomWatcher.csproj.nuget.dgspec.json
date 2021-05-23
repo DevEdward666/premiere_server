@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\TUO-Edward\\source\\repos\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj": {}
+    "D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj": {}
   },
   "projects": {
-    "C:\\Users\\TUO-Edward\\source\\repos\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj": {
+    "D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\TUO-Edward\\source\\repos\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
+        "projectUniqueName": "D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
         "projectName": "DeliveryRoomWatcher",
-        "projectPath": "C:\\Users\\TUO-Edward\\source\\repos\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
+        "projectPath": "D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
         "packagesPath": "C:\\Users\\TUO-Edward\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\TUO-Edward\\source\\repos\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\obj\\",
+        "outputPath": "D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\TUO-Edward\\AppData\\Roaming\\NuGet\\NuGet.Config",
