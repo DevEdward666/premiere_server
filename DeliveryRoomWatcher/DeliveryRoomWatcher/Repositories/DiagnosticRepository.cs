@@ -22,7 +22,7 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
-                        var data = con.Query($@"SELECT DISTINCT dlrr.`req_pk` as appointmentno,CONCAT(dlrr.`first_name`,' ',dlrr.`middle_name`,' ',dlrr.`last_name`) AS fullname,ds.sts_desc AS STATUS,requested_at AS encodedat FROM ddt_lab_req_mast dlrr JOIN ddt_lab_req_proc dlrp ON dlrr.`req_pk` = dlrp.`req_pk` JOIN ddt_status ds ON dlrr.sts_pk=ds.sts_pk WHERE prem_id = @premid LIMIT @offset",
+                        var data = con.Query($@"SELECT DISTINCT dlrr.`req_pk` as appointmentno,CONCAT(dlrr.`first_name`,' ',dlrr.`middle_name`,' ',dlrr.`last_name`) AS fullname,ds.sts_desc AS STATUS,requested_at AS encodedat FROM ddt_lab_req_mast dlrr JOIN ddt_lab_req_proc dlrp ON dlrr.`req_pk` = dlrp.`req_pk` JOIN ddt_status ds ON dlrr.sts_pk=ds.sts_pk WHERE prem_id = @premid  AND ds.`sts_desc`='pending' LIMIT @offset",
                                             prem,transaction: tran);
 
                         return new ResponseModel
@@ -83,8 +83,8 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
-                        var data = con.Query($@"SELECT  ds.sts_desc AS description,da.req_pk as appointmentno,dp.file_name AS resurl,DATE_FORMAT(da.result_at,'%Y-%m-%d %h:%m %p') finishedat 
-FROM ddt_lab_req_mast da JOIN ddt_lab_req_result dp ON da.`req_pk` = dp.`req_pk` JOIN ddt_status ds ON ds.`sts_pk`=da.`sts_pk` WHERE da.`prem_id` = @premid  LIMIT @offset ",
+                        var data = con.Query($@"SELECT  ds.sts_desc AS description,da.req_pk as appointmentno,dp.path AS resurl,DATE_FORMAT(da.result_at,'%Y-%m-%d %h:%m %p') finishedat 
+                        FROM ddt_lab_req_mast da JOIN ddt_lab_req_result dp ON da.`req_pk` = dp.`req_pk` JOIN ddt_status ds ON ds.`sts_pk`=da.`sts_pk` WHERE da.`prem_id` = @premid  LIMIT @offset ",
                                             prem,transaction: tran);
 
                         return new ResponseModel

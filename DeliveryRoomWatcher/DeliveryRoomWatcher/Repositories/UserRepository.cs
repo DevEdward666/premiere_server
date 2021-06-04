@@ -1,12 +1,15 @@
 ﻿using Dapper;
 using DeliveryRoomWatcher.Config;
+using DeliveryRoomWatcher.Hooks;
 using DeliveryRoomWatcher.Models.Common;
 using DeliveryRoomWatcher.Models.User;
 using DeliveryRoomWatcher.Parameters;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
+using QRCoder;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace DeliveryRoomWatcher.Repositories
@@ -14,7 +17,7 @@ namespace DeliveryRoomWatcher.Repositories
     public class UserRepository
     {
         DatabaseConfig dbConfig = new DatabaseConfig();
-
+        DefaultsRepo defaults = new DefaultsRepo();
         public List<UserModel> authenticateUser(PAuthUser cred)
         {
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
@@ -394,6 +397,39 @@ namespace DeliveryRoomWatcher.Repositories
             }
 
         }
+        public ResponseModel getusersqr(string username)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                  
+                        string brand_logo = defaults.hospitalLogo().data.ToString();
+                        var data = con.QuerySingle($@"select prem_id from prem_usermaster where prem_id=@username",
+                             new { username }, transaction: tran
+                            );
+                        QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                        QRCodeData qrCodeData = qrGenerator.CreateQrCode(username, QRCodeGenerator.ECCLevel.Q);
+                        QRCode qrCode = new QRCode(qrCodeData);
+
+
+                        var brand_logo_bitmap = UseFileParser.Base64StringToBitmap(brand_logo);
+                        Bitmap qrCodeImage = qrCode.GetGraphic(35, Color.Black, Color.White, brand_logo_bitmap, 25);
+                        string qr_with_brand_logo = UseFileParser.BitmapToBase64(qrCodeImage);
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = qr_with_brand_logo
+                        };
+                    }
+              
+
+                }
+            
+
+        }
         public ResponseModel getUserOTP(PGetUsername username)
         {
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
@@ -432,7 +468,7 @@ namespace DeliveryRoomWatcher.Repositories
                                             return new ResponseModel
                                             {
                                                 success = true,
-                                                message = "Registration Complete."
+                                                message = "Registration Complete. Your account is still on review, We will email you once it's Verified. Thank You"
                                             };
                                         }
                                         else {

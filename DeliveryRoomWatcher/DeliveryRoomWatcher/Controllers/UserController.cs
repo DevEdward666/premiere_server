@@ -166,6 +166,13 @@ namespace DeliveryRoomWatcher.Controllers
         {
             
             return Ok(_user.getUserInfo(username));
+        }   
+        [HttpPost]
+        [Route("api/user/getusersqr")]
+        public ActionResult getusersqr(PSingleString payload)
+        {
+            
+            return Ok(_user.getusersqr(payload.value));
         }
         [HttpPost]
         [Route("api/user/getuserpin")]

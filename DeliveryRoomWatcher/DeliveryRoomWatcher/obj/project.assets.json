@@ -734,6 +734,18 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
+      "QRCoder/1.4.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "4.7.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/QRCoder.dll": {}
+        }
+      },
       "runtime.native.System/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -1134,7 +1146,7 @@
           "Microsoft.Win32.SystemEvents": "4.7.0"
         },
         "compile": {
-          "ref/netcoreapp3.0/_._": {}
+          "ref/netcoreapp3.0/System.Drawing.Common.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Drawing.Common.dll": {}
@@ -3261,6 +3273,21 @@
         "lib/netstandard2.0/BouncyCastle.Crypto.xml",
         "portable.bouncycastle.1.8.8.nupkg.sha512",
         "portable.bouncycastle.nuspec"
+      ]
+    },
+    "QRCoder/1.4.1": {
+      "sha512": "W8KwCwsOJe9SI7Cm7XeIMawd08F/US6xNw34lg2Qnx6m7GYYakxbyBQaNoW1Q75oJOmX/32sJUZr6Cix2B6GUQ==",
+      "type": "package",
+      "path": "qrcoder/1.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/QRCoder.dll",
+        "lib/net40/QRCoder.dll",
+        "lib/netstandard1.1/QRCoder.dll",
+        "lib/netstandard2.0/QRCoder.dll",
+        "qrcoder.1.4.1.nupkg.sha512",
+        "qrcoder.nuspec"
       ]
     },
     "runtime.native.System/4.0.0": {
@@ -7640,6 +7667,7 @@
       "Microsoft.AspNetCore.Rewrite >= 2.2.0",
       "Microsoft.AspNetCore.SignalR.Client >= 3.1.5",
       "MySql.Data >= 8.0.22",
+      "QRCoder >= 1.4.1",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -7649,11 +7677,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
+      "projectUniqueName": "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
       "projectName": "DeliveryRoomWatcher",
-      "projectPath": "E:\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
+      "projectPath": "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
       "packagesPath": "C:\\Users\\TUO-Edward\\.nuget\\packages\\",
-      "outputPath": "E:\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\obj\\",
+      "outputPath": "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\TUO-Edward\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7708,6 +7736,10 @@
             "target": "Package",
             "version": "[8.0.22, )"
           },
+          "QRCoder": {
+            "target": "Package",
+            "version": "[1.4.1, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[5.6.3, )"
@@ -7723,12 +7755,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -7737,7 +7763,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.406\\RuntimeIdentifierGraph.json"
       }
     }
   }

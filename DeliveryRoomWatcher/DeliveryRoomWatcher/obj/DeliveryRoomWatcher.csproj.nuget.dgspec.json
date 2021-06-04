@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj": {}
+    "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj": {}
   },
   "projects": {
-    "E:\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj": {
+    "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
+        "projectUniqueName": "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
         "projectName": "DeliveryRoomWatcher",
-        "projectPath": "E:\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
+        "projectPath": "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
         "packagesPath": "C:\\Users\\TUO-Edward\\.nuget\\packages\\",
-        "outputPath": "E:\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\obj\\",
+        "outputPath": "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\TUO-Edward\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -66,6 +66,10 @@
               "target": "Package",
               "version": "[8.0.22, )"
             },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.4.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
@@ -81,12 +85,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.2, 3.1.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -95,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.406\\RuntimeIdentifierGraph.json"
         }
       }
     }

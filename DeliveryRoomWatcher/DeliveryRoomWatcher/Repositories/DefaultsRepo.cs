@@ -43,6 +43,38 @@ namespace DeliveryRoomWatcher.Repositories
             }
 
         }
+        public ResponseModel hospitalLogo()
+        {
+            try
+            {
+                using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+                {
+                    con.Open();
+                    using (var tran = con.BeginTransaction())
+                    {
+                        string logo = Convert.ToBase64String(con.QuerySingle<byte[]>($@"
+                                        SELECT hosplogo  FROM hospitallogo WHERE hospcode = GetDefaultValue('hospinitial')
+                                        "
+                                         , null, transaction: tran));
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = logo
+                        };
+                    }
+                }
+
+            }
+            catch (Exception err)
+            {
+
+                return new ResponseModel
+                {
+                    success = false,
+                    message = err.Message
+                };
+            }
+        }
 
         public ResponseModel getCity(PDefaults def)
         {
