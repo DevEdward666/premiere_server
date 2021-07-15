@@ -31,5 +31,11 @@ namespace DeliveryRoomWatcher.Controllers
         {
             return Ok(_diagnostic.getAppointmentsResultsList(prem));
         }
+        [HttpPost]
+        [Route("api/diagnostics/getLabReqPdf")]
+        public IActionResult getLabReqPdf(PSingleString payload)
+        {
+            return Ok(_diagnostic.getLabReqPdf(payload.value));
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace DeliveryRoomWatcher.Models.Common
         public bool success { get; set; } = false;
         public object data { get; set; }
         public string message { get; set; }
+        public string other_info { get; set; }
         public List<ErrorModel> errors { get; set; }
         public string file { get; set; }
     }

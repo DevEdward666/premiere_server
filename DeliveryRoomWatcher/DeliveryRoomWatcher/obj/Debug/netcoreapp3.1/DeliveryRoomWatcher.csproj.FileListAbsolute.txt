@@ -304,6 +304,7 @@ D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\ob
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.pdb
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.genruntimeconfig.cache
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\QRCoder.dll
+D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\FluentFTP.dll
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.CoreCompileInputs.cache
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cs
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cache

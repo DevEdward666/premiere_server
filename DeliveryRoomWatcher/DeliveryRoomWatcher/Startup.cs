@@ -18,6 +18,10 @@ namespace DeliveryRoomWatcher
             Configuration = configuration;
 
             DatabaseConfig.conStr = configuration.GetConnectionString("MysqlConnection");
+            DefaultConfig.ftp_ip = Configuration["FTP:ip"];
+            DefaultConfig.ftp_port = Configuration["FTP:port"];
+            DefaultConfig.ftp_user = Configuration["FTP:user"];
+            DefaultConfig.ftp_pass = Configuration["FTP:pass"];
         }
 
         public IConfiguration Configuration { get; }

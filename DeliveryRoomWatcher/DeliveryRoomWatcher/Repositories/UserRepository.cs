@@ -67,6 +67,7 @@ namespace DeliveryRoomWatcher.Repositories
                         var data = con.Query<string>(query, user_info, transaction: tran);
                         if (data.Count() == 0)
                         {
+                            string otpnumber = "SELECT LPAD(FLOOR(RAND() * 999999.99), 6, '0') as otpnumber";
                             int insert_user_information = con.Execute($@"INSERT INTO prem_usersinfo (idno,img,docs,username,firstname,middlename,lastname,gender,
                                                                     birthdate,mobileno,email,region_code,city_code,province_code,barangay_code,zipcode,nationality_code,address)
                                                                     VALUES(null,@url,@url_docs,@username,@firstname,@middlename,@lastname,@gender,
@@ -83,7 +84,7 @@ namespace DeliveryRoomWatcher.Repositories
 
                                 if (insert_user_cred >= 0)
                                 {
-                                    int insert_user_otp = con.Execute($@"INSERT INTO prem_otp  (id,otp,toUserName,date_expire,createdAt) VALUES(NULL,LPAD(FLOOR(RAND() * 999999.99), 6, '0'),@username,NOW(),NOW())",
+                                    int insert_user_otp = con.Execute($@"INSERT INTO prem_otp  (id,otp,toUserName,date_expire,createdAt) VALUES(NULL,{otpnumber},@username,NOW(),NOW())",
                                                                      user_info, transaction: tran);
                                     if (insert_user_otp >= 0)
                                     {
@@ -91,7 +92,9 @@ namespace DeliveryRoomWatcher.Repositories
                                         return new ResponseModel
                                         {
                                             success = true,
-                                            message = "The User credentials has been Added sucessfully."
+                                            message = "The User credentials has been Added sucessfully.",
+                                            other_info= otpnumber
+
                                         };
 
                                     }
@@ -157,8 +160,8 @@ namespace DeliveryRoomWatcher.Repositories
                         var data = con.Query<string>(query, user_info, transaction: tran);
                         if (data.Count() != 0)
                         {
-                            
-                                int insert_user_otp = con.Execute($@"INSERT INTO prem_otp  (id,otp,toUserName,date_expire,createdAt) VALUES(NULL,LPAD(FLOOR(RAND() * 999999.99), 6, '0'),@username,NOW(),NOW())",
+                            string otpnumber = "SELECT LPAD(FLOOR(RAND() * 999999.99), 6, '0') as otpnumber";
+                                int insert_user_otp = con.Execute($@"INSERT INTO prem_otp  (id,otp,toUserName,date_expire,createdAt) VALUES(NULL,{otpnumber},@username,NOW(),NOW())",
                                                        user_info, transaction: tran);
                                 if (insert_user_otp >= 0)
                                 {
@@ -166,7 +169,8 @@ namespace DeliveryRoomWatcher.Repositories
                                     return new ResponseModel
                                     {
                                         success = true,
-                                        message = "The User credentials has been Added sucessfully."
+                                        message = "The User credentials has been Added sucessfully.",
+                                        other_info=otpnumber
                                     };
 
                                 }
