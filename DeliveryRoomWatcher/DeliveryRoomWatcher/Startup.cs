@@ -25,15 +25,15 @@ namespace DeliveryRoomWatcher
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy(name: MyAllowSpecificOrigins,
-            //                      builder =>
-            //                      {
-            //                          builder.WithOrigins("http://localhost:4000").AllowAnyMethod().AllowAnyHeader();
-            //                      });
-            //});
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+                                  });
+            });
+            //services.AddCors();
             services.InstallServicesInAssembly(Configuration);
             services.AddSignalR();
         }
@@ -44,25 +44,26 @@ namespace DeliveryRoomWatcher
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors(builder => builder
-                  .AllowAnyHeader()
-                  .AllowAnyMethod()
-                  .SetIsOriginAllowed((host) => true)
-                  .AllowCredentials()
+            app.UseHttpsRedirection();
+            app.UseCors(builder => builder.WithOrigins("http://localhost:5020")
+              .SetIsOriginAllowed(origin => true)
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials()
               );
 
 
-            var swaggerConfig = new SwaggerConfig();
-            Configuration.GetSection(nameof(SwaggerConfig)).Bind(swaggerConfig);
-            app.UseSwagger(option =>
-            {
-                option.RouteTemplate = swaggerConfig.JsonRoute;
-            });
+            //var swaggerConfig = new SwaggerConfig();
+            //Configuration.GetSection(nameof(SwaggerConfig)).Bind(swaggerConfig);
+            //app.UseSwagger(option =>
+            //{
+            //    option.RouteTemplate = swaggerConfig.JsonRoute;
+            //});
 
-            app.UseSwaggerUI(option =>
-            {
-                option.SwaggerEndpoint(swaggerConfig.UIEndpoint, swaggerConfig.Description);
-            });
+            //app.UseSwaggerUI(option =>
+            //{
+            //    option.SwaggerEndpoint(swaggerConfig.UIEndpoint, swaggerConfig.Description);
+            //});
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Resources/Images")),
@@ -81,15 +82,16 @@ namespace DeliveryRoomWatcher
                 RequestPath = "/Resources/Events"
 
             });
-            app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseWebSockets();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<MessageHub>("/message");
-                endpoints.MapHub<NotifyHub>("/notify");
                 endpoints.MapControllers();
+                endpoints.MapHub<MessageHub>("api/message/message");
+                endpoints.MapHub<NotifyHub>("api/notif/notify");
+
             });
 
         }

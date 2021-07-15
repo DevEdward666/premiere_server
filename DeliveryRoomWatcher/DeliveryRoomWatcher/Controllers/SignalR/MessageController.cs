@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace DeliveryRoomWatcher.Controllers.SignalR
 {
-    [Route("api/message")]
     [ApiController]
     public class MessageController : Controller
     {
@@ -20,6 +19,8 @@ namespace DeliveryRoomWatcher.Controllers.SignalR
         {
             _messageHub = messagehub;
         }
+        [HttpPost]
+        [Route("api/message")]
         [HttpPost]
         public async Task<IActionResult> SendMessage(mdlMessagePost.MessagePost messagePost)
         {
