@@ -141,3 +141,4 @@ D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\ob
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Release\netcoreapp3.1\DeliveryRoomWatcher.dll
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Release\netcoreapp3.1\DeliveryRoomWatcher.pdb
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Release\netcoreapp3.1\DeliveryRoomWatcher.genruntimeconfig.cache
+D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Release\netcoreapp3.1\FluentFTP.dll

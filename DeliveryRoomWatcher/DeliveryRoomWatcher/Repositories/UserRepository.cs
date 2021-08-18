@@ -67,7 +67,9 @@ namespace DeliveryRoomWatcher.Repositories
                         var data = con.Query<string>(query, user_info, transaction: tran);
                         if (data.Count() == 0)
                         {
-                            string otpnumber = "SELECT LPAD(FLOOR(RAND() * 999999.99), 6, '0') as otpnumber";
+
+                            string getotp = $@"SELECT LPAD(FLOOR(RAND() * 999999.99), 6, '0') as otpnumber";
+                            string otpnumber = con.QuerySingleOrDefault<string>(getotp, null, transaction: tran);
                             int insert_user_information = con.Execute($@"INSERT INTO prem_usersinfo (idno,img,docs,username,firstname,middlename,lastname,gender,
                                                                     birthdate,mobileno,email,region_code,city_code,province_code,barangay_code,zipcode,nationality_code,address)
                                                                     VALUES(null,@url,@url_docs,@username,@firstname,@middlename,@lastname,@gender,
@@ -160,7 +162,8 @@ namespace DeliveryRoomWatcher.Repositories
                         var data = con.Query<string>(query, user_info, transaction: tran);
                         if (data.Count() != 0)
                         {
-                            string otpnumber = "SELECT LPAD(FLOOR(RAND() * 999999.99), 6, '0') as otpnumber";
+                            string getotp = $@"SELECT LPAD(FLOOR(RAND() * 999999.99), 6, '0') as otpnumber";
+                            string otpnumber = con.QuerySingleOrDefault<string>(getotp, null, transaction: tran);
                                 int insert_user_otp = con.Execute($@"INSERT INTO prem_otp  (id,otp,toUserName,date_expire,createdAt) VALUES(NULL,{otpnumber},@username,NOW(),NOW())",
                                                        user_info, transaction: tran);
                                 if (insert_user_otp >= 0)

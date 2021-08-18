@@ -56,7 +56,7 @@ namespace DeliveryRoomWatcher.Controllers
             };
             using (var client = new SmtpClient())
             {
-                client.Connect("smtp.gmail.com", 587);
+                client.Connect("smtp.gmail.com", 587,false);
 
            
                 client.Authenticate("tuosolutions@gmail.com", "Dominion_01");

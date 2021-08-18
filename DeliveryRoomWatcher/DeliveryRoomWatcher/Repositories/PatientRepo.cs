@@ -547,7 +547,7 @@ namespace DeliveryRoomWatcher.Repositories
                                 //{
                                     foreach (var proc in prem.listofprocedures)
                                     {
-                                        string sql_add_proc = $@"INSERT  INTO ddt_lab_req_proc SET req_pk='{getAppointmentID}',proccode=@proccode,procdesc=@procdesc,price=(SELECT regprice FROM `ddt_prochdr` WHERE proccode  = @proccode LIMIT 1),sts_pk='p'";
+                                        string sql_add_proc = $@"INSERT  INTO ddt_lab_req_proc SET req_pk='{getAppointmentID}',proccode=@proccode,procdesc=@procdesc,price=(SELECT regprice FROM `ddt_prochdr` WHERE proccode  = @proccode LIMIT 1),sts_pk='fa'";
 
                                         int insert_appointment_procedure = con.Execute(sql_add_proc, proc, transaction: tran);
 
@@ -625,7 +625,7 @@ namespace DeliveryRoomWatcher.Repositories
                             SET req_pk='{getAppointmentID}',prem_id=@premid,reason=@reason,prefix=@prefix,first_name=@firstname,middle_name=@middlename
                             ,last_name=@lastname,suffix=@suffix,gender=@gender,cs_pk=@civil_status_key,cs_desc=@civil_status_desc,nat_pk=@nationality_code,nat_desc=@nationality_code
                              ,birth_date=@birthdate,email=@email,mob_no=@mobile,local_address=@fulladdress,brgy_pk=@barangay,prov_pk=@province_code
-                            ,city_pk=@city_code,region_pk=@region_code,psgc_address=@psgc_address,zip_code=@zipcode,tran_method='o',req_total_cost=@req_total,requested_at=NOW(),sts_pk='p'",
+                            ,city_pk=@city_code,region_pk=@region_code,psgc_address=@psgc_address,zip_code=@zipcode,tran_method='o',req_total_cost=@req_total,requested_at=NOW(),sts_pk='fa'",
                                                Appointment, transaction: tran);
                             if (insert_appointment >= 0)
                             {
@@ -639,7 +639,7 @@ namespace DeliveryRoomWatcher.Repositories
                                     {
                                         int i = Appointment.listofprocedures.Count;
                                         int x = 0;
-                                        string sql_add_proc = $@"INSERT INTO ddt_lab_req_proc SET req_pk='{getAppointmentID}',proccode=@proccode,procdesc=@procdesc,price=(SELECT regprice FROM `ddt_prochdr` WHERE proccode  = @proccode LIMIT 1),sts_pk='p'";
+                                        string sql_add_proc = $@"INSERT INTO ddt_lab_req_proc SET req_pk='{getAppointmentID}',proccode=@proccode,procdesc=@procdesc,price=(SELECT regprice FROM `ddt_prochdr` WHERE proccode  = @proccode LIMIT 1),sts_pk='fa'";
 
                                         int insert_appointment_procedure = con.Execute(sql_add_proc, proc, transaction: tran);
                      

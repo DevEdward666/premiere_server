@@ -90,6 +90,7 @@ namespace DeliveryRoomWatcher
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseWebSockets();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
