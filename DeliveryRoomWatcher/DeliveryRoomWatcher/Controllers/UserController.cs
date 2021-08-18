@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -166,6 +167,13 @@ namespace DeliveryRoomWatcher.Controllers
         {
             
             return Ok(_user.getUserInfo(username));
+        }   
+        [HttpPost]
+        [Route("api/user/getusersqr")]
+        public ActionResult getusersqr(PSingleString payload)
+        {
+            
+            return Ok(_user.getusersqr(payload.value));
         }
         [HttpPost]
         [Route("api/user/getuserpin")]
@@ -217,43 +225,85 @@ namespace DeliveryRoomWatcher.Controllers
         {
             return Ok(_user.getUserMobile(username));
         }
-
-        [Route("api/user/getimage")]
         [HttpPost]
-        public ActionResult Post(string username)
+        [Route("api/user/getimage")]
+ 
+        public ResponseModel getimage(string username)
         {
-            if (username=="undefined" || username == null)
-            {
-                username = "test";
-                string path = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\test\test.jpg");
-                var image = System.IO.File.OpenRead(path);
-                return File(image, "image/jpeg");
-            }
-            else
-            {
+         
+              
+                try
+                {
                 string path = Path.Combine(Directory.GetCurrentDirectory(), username);
-                var image = System.IO.File.OpenRead(path);
-                return File(image, "image/jpeg");
+                using (Image images = Image.FromFile(path))
+                    {
+                        using (MemoryStream m = new MemoryStream())
+                        {
+                            images.Save(m, images.RawFormat);
+                            byte[] imageBytes = m.ToArray();
+
+
+
+                            return new ResponseModel
+                            {
+                                success = true,
+                                message = "data:image/png;base64," + Convert.ToBase64String(imageBytes)
+                            };
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                  return new ResponseModel
+                            {
+                                success = false,
+                                message = "Error: "+e.ToString()
+                            };
+
+                    //    var image = System.IO.File.OpenRead(path);
+                    //return File(image, "image/jpeg");
+                }
             }
          
-        }
-        [Route("api/user/getimageDocs")]
+        
+
         [HttpPost]
-        public ActionResult getimageDocs(string username)
+        [Route("api/user/getimageDocs")]
+  
+        public ResponseModel getimageDocs(string username)
         {
-            if (username == "undefined" || username==null)
-            {
-                username = "test";
-                string path = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\test\test_VerificationDocs.jpg");
-                var image = System.IO.File.OpenRead(path );
-                return File(image, "image/jpeg");
-            }
-            else
-            {
+                try
+                {
                 string path = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{username}\{username}_VerificationDocs.jpg");
-                var image = System.IO.File.OpenRead(path );
-                return File(image, "image/jpeg");
+                using (Image images = Image.FromFile(path))
+                    {
+                        using (MemoryStream m = new MemoryStream())
+                        {
+                            images.Save(m, images.RawFormat);
+                            byte[] imageBytes = m.ToArray();
+
+
+
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            message = "data:image/png;base64," + Convert.ToBase64String(imageBytes)
+                        };
+                    }
+                    }
+                }
+                catch (Exception e)
+                {
+                return new ResponseModel
+                {
+                    success = false,
+                    message = "Error: " + e.ToString()
+                };
             }
+                //var image = System.IO.File.OpenRead(path );
+                //return File(image, "image/jpeg");
+            
 
         }
         [Route("api/user/getResultsPDF")]
@@ -326,18 +376,18 @@ namespace DeliveryRoomWatcher.Controllers
             try
             {
              
-                string path = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\\Images\\{file.FolderName}");
+                string path = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}");
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
-                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\\Images\\{file.FolderName}\\", file.FileName);
+                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}\\", file.FileName);
                     using (Stream stream = new FileStream(filepath, FileMode.Create))
                     {
                         file.FormFile.CopyTo(stream);
                     }
                 }
                 else {
-                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\\Images\\{file.FolderName}\\", file.FileName);
+                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}\", file.FileName);
                     using (Stream stream = new FileStream(filepath, FileMode.Create))
                     {
                         file.FormFile.CopyTo(stream);
@@ -355,6 +405,17 @@ namespace DeliveryRoomWatcher.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
+
+
+        [HttpGet]
+        [Route("api/start")]
+        public ActionResult start()
+        {
+
+
+            return Ok("The server has started successfully");
+        }
+
         [HttpPost]
         [Route("api/user/UploadFileProfile")]
         public ActionResult UploadFileProfile([FromForm] FileModelProfile file)
@@ -362,11 +423,11 @@ namespace DeliveryRoomWatcher.Controllers
             try
             {
 
-                string path = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\\Images\\{file.FolderName}");
+                string path = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\\{file.FolderName}");
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
-                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\\Images\\{file.FolderName}\\", file.FileName);
+                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}\", file.FileName);
                     using (Stream stream = new FileStream(filepath, FileMode.Create))
                     {
                         file.FormFile.CopyTo(stream);
@@ -374,7 +435,7 @@ namespace DeliveryRoomWatcher.Controllers
                 }
                 else
                 {
-                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\\Images\\{file.FolderName}\\", file.FileName);
+                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}\", file.FileName);
                     using (Stream stream = new FileStream(filepath, FileMode.Create))
                     {
                         file.FormFile.CopyTo(stream);

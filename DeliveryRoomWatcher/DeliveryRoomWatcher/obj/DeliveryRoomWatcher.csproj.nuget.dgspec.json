@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
         "packagesPath": "C:\\Users\\TUO-Edward\\.nuget\\packages\\",
         "outputPath": "D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\obj\\",
+=======
+    "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj": {}
+  },
+  "projects": {
+    "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
+        "projectName": "DeliveryRoomWatcher",
+        "projectPath": "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
+        "packagesPath": "C:\\Users\\TUO-Edward\\.nuget\\packages\\",
+        "outputPath": "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\obj\\",
+>>>>>>> b6c15f3be27916fca84a6545a836a775415c097a
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\TUO-Edward\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,6 +56,10 @@
               "target": "Package",
               "version": "[2.0.78, )"
             },
+            "FluentFTP": {
+              "target": "Package",
+              "version": "[34.0.0, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[2.10.1, )"
@@ -65,6 +83,10 @@
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.22, )"
+            },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.4.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

@@ -23,15 +23,22 @@ namespace DeliveryRoomWatcher.Controllers
       
         public void SaveImage(setNewImage image)
         {
-            var base64img =$@"{image.base64}";
-                var bytes = Convert.FromBase64String(base64img);
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\\News\\", image.title + ".jpg");
-
-            using (var imageFile = new FileStream(filePath, FileMode.Create))
+            try
             {
-                imageFile.Write(bytes, 0, bytes.Length);
-                imageFile.Flush();
-                _manage.InsertNewNews(image);
+                var base64img = $@"{image.base64}";
+                string convert = base64img.Replace("data:image/png;base64,", String.Empty);
+                var bytes = Convert.FromBase64String(convert);
+                string filePath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\News\", image.title + ".jpg");
+
+                using (var imageFile = new FileStream(filePath, FileMode.Create))
+                {
+                    imageFile.Write(bytes, 0, bytes.Length);
+                    imageFile.Flush();
+                    _manage.InsertNewNews(image);
+                }
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message.ToString());
             }
          
         }
@@ -76,8 +83,9 @@ namespace DeliveryRoomWatcher.Controllers
         public void insertevents(PEvents.PEvent events)
         {
             var base64img = $@"{events.base64}";
-            var bytes = Convert.FromBase64String(base64img);
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\\Events\\", events.evtitle + ".jpg");
+            string convert = base64img.Replace("data:image/png;base64,", String.Empty);
+            var bytes = Convert.FromBase64String(convert);
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Events\", events.evtitle + ".jpg");
 
             using (var imageFile = new FileStream(filePath, FileMode.Create))
             {

@@ -1,12 +1,15 @@
 ﻿using Dapper;
 using DeliveryRoomWatcher.Config;
+using DeliveryRoomWatcher.Hooks;
 using DeliveryRoomWatcher.Models.Common;
 using DeliveryRoomWatcher.Models.User;
 using DeliveryRoomWatcher.Parameters;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
+using QRCoder;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace DeliveryRoomWatcher.Repositories
@@ -14,7 +17,7 @@ namespace DeliveryRoomWatcher.Repositories
     public class UserRepository
     {
         DatabaseConfig dbConfig = new DatabaseConfig();
-
+        DefaultsRepo defaults = new DefaultsRepo();
         public List<UserModel> authenticateUser(PAuthUser cred)
         {
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
@@ -64,6 +67,7 @@ namespace DeliveryRoomWatcher.Repositories
                         var data = con.Query<string>(query, user_info, transaction: tran);
                         if (data.Count() == 0)
                         {
+                            string otpnumber = "SELECT LPAD(FLOOR(RAND() * 999999.99), 6, '0') as otpnumber";
                             int insert_user_information = con.Execute($@"INSERT INTO prem_usersinfo (idno,img,docs,username,firstname,middlename,lastname,gender,
                                                                     birthdate,mobileno,email,region_code,city_code,province_code,barangay_code,zipcode,nationality_code,address)
                                                                     VALUES(null,@url,@url_docs,@username,@firstname,@middlename,@lastname,@gender,
@@ -80,7 +84,7 @@ namespace DeliveryRoomWatcher.Repositories
 
                                 if (insert_user_cred >= 0)
                                 {
-                                    int insert_user_otp = con.Execute($@"INSERT INTO prem_otp  (id,otp,toUserName,date_expire,createdAt) VALUES(NULL,LPAD(FLOOR(RAND() * 999999.99), 6, '0'),@username,NOW(),NOW())",
+                                    int insert_user_otp = con.Execute($@"INSERT INTO prem_otp  (id,otp,toUserName,date_expire,createdAt) VALUES(NULL,{otpnumber},@username,NOW(),NOW())",
                                                                      user_info, transaction: tran);
                                     if (insert_user_otp >= 0)
                                     {
@@ -88,7 +92,9 @@ namespace DeliveryRoomWatcher.Repositories
                                         return new ResponseModel
                                         {
                                             success = true,
-                                            message = "The User credentials has been Added sucessfully."
+                                            message = "The User credentials has been Added sucessfully.",
+                                            other_info= otpnumber
+
                                         };
 
                                     }
@@ -154,8 +160,8 @@ namespace DeliveryRoomWatcher.Repositories
                         var data = con.Query<string>(query, user_info, transaction: tran);
                         if (data.Count() != 0)
                         {
-                            
-                                int insert_user_otp = con.Execute($@"INSERT INTO prem_otp  (id,otp,toUserName,date_expire,createdAt) VALUES(NULL,LPAD(FLOOR(RAND() * 999999.99), 6, '0'),@username,NOW(),NOW())",
+                            string otpnumber = "SELECT LPAD(FLOOR(RAND() * 999999.99), 6, '0') as otpnumber";
+                                int insert_user_otp = con.Execute($@"INSERT INTO prem_otp  (id,otp,toUserName,date_expire,createdAt) VALUES(NULL,{otpnumber},@username,NOW(),NOW())",
                                                        user_info, transaction: tran);
                                 if (insert_user_otp >= 0)
                                 {
@@ -163,7 +169,8 @@ namespace DeliveryRoomWatcher.Repositories
                                     return new ResponseModel
                                     {
                                         success = true,
-                                        message = "The User credentials has been Added sucessfully."
+                                        message = "The User credentials has been Added sucessfully.",
+                                        other_info=otpnumber
                                     };
 
                                 }
@@ -394,6 +401,39 @@ namespace DeliveryRoomWatcher.Repositories
             }
 
         }
+        public ResponseModel getusersqr(string username)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                  
+                        string brand_logo = defaults.hospitalLogo().data.ToString();
+                        var data = con.QuerySingle($@"select prem_id from prem_usermaster where prem_id=@username",
+                             new { username }, transaction: tran
+                            );
+                        QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                        QRCodeData qrCodeData = qrGenerator.CreateQrCode(username, QRCodeGenerator.ECCLevel.Q);
+                        QRCode qrCode = new QRCode(qrCodeData);
+
+
+                        var brand_logo_bitmap = UseFileParser.Base64StringToBitmap(brand_logo);
+                        Bitmap qrCodeImage = qrCode.GetGraphic(35, Color.Black, Color.White, brand_logo_bitmap, 25);
+                        string qr_with_brand_logo = UseFileParser.BitmapToBase64(qrCodeImage);
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = qr_with_brand_logo
+                        };
+                    }
+              
+
+                }
+            
+
+        }
         public ResponseModel getUserOTP(PGetUsername username)
         {
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
@@ -432,7 +472,7 @@ namespace DeliveryRoomWatcher.Repositories
                                             return new ResponseModel
                                             {
                                                 success = true,
-                                                message = "Registration Complete."
+                                                message = "Registration Complete. Your account is still on review, We will email you once it's Verified. Thank You"
                                             };
                                         }
                                         else {

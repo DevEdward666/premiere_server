@@ -25,7 +25,7 @@ namespace DeliveryRoomWatcher.Repositories
                     {
                         var data = con.Query($@"SELECT pn.*,COUNT(pnr.reaction)AS likes FROM prem_news pn  LEFT JOIN prem_news_reaction pnr ON pn.id=pnr.news_id GROUP BY pn.id limit @offset",
                                              news,transaction: tran);
-
+                                    
                         return new ResponseModel
                         {
                             success = true,
