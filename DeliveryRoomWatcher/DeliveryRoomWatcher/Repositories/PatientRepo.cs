@@ -279,7 +279,7 @@ namespace DeliveryRoomWatcher.Repositories
                     {
                         if (!prem.status.Equals("declined"))
                         {
-                            string check_exist = $@"SELECT patno from prem_usersinfo where patno IS NOT NULL and prem_id=@prem_id";
+                            string check_exist = $@"SELECT patno from prem_usersinfo where patno IS NOT NULL and prem_id=@premid";
                             string check_if_exist = con.QuerySingleOrDefault<string>(check_exist, prem, transaction: tran);
                             if (check_if_exist == null)
                             {
@@ -533,22 +533,21 @@ namespace DeliveryRoomWatcher.Repositories
                         string getAppointmentID = con.QuerySingleOrDefault<string>(AppointmentID, prem, transaction: tran);
                         if (getAppointmentID != null)
                         {
-                            int insert_appointment = con.Execute($@"INSERT INTO ddt_appointment (appointmentno,prem_id,firstname,middlename,lastname,suffix,gender,csid,natid,relid,birthdate,email,mobno,line1,line2,brgycode,provincecode,citymuncode,regioncode,zipcode,reqreason,requestedat) 
-                                                (SELECT '{getAppointmentID}',@premid, pu.firstname,pu.middlename,pu.lastname,pu.suffix,pu.gender,pu.civil_status,pu.nationality_code,pu.religion_code, pu.birthdate,pu.email,pu.mobileno,pu.address,pu.address,pu.barangay_code,pu.province_code,pu.city_code,pu.region_code,pu.zipcode,@reason,NOW() FROM prem_usersinfo pu 
-                                                JOIN prem_usermaster pum ON pu.username = pum.username
-                                                 WHERE pu.prem_id =@premid)",
+                            int insert_appointment = con.Execute($@"INSERT INTO ddt_lab_req_mast (req_pk,prem_id,reason,first_name,middle_name,last_name,suffix,gender, cs_pk,nat_pk,nat_desc,rel_pk,rel_desc,birth_date,email,mob_no,local_address,brgy_pk,prov_pk,city_pk,region_pk,psgc_address, zip_code,requested_at,tran_method,req_total_cost,sts_pk) 
+                            (SELECT '{getAppointmentID}',@premid,@reason,pu.firstname,pu.middlename,pu.lastname,pu.suffix,pu.gender,pu.civil_status,pu.nationality_code,pu.nationality_code,pu.religion_code,pu.religion_code,pu.birthdate,pu.email,pu.mobileno,pu.address,pu.barangay_code,pu.province_code,pu.city_code,pu.region_code,CONCAT(db.barangaydesc,',',city.citymundesc,',',dp.provincedesc),pu.zipcode,NOW(),'o',@req_total_cost,'p'
+                            FROM prem_usersinfo pu JOIN prem_usermaster pum ON pu.username = pum.username JOIN ddt_province dp ON dp.provincecode = pu.province_code JOIN ddt_barangay db ON db.barangaycode = pu.barangay_code JOIN citymunicipality city ON city.citymuncode = pu.city_code WHERE pu.prem_id = @premid)",
                                                prem, transaction: tran);
                             if (insert_appointment >= 0)
                             {
 
-                                int insert_appointment_log = con.Execute($@"INSERT INTO ddt_appointmentlog (appointmentno,logevent,stsid,encodedat,encodedby) VALUES('{getAppointmentID}','request','1',NOW(),@premid)",
-                                          prem, transaction: tran);
+                                //int insert_appointment_log = con.Execute($@"INSERT INTO ddt_appointmentlog (appointmentno,logevent,stsid,encodedat,encodedby) VALUES('{getAppointmentID}','request','1',NOW(),@premid)",
+                                //          prem, transaction: tran);
 
-                                if (insert_appointment_log >= 0)
-                                {
+                                //if (insert_appointment_log >= 0)
+                                //{
                                     foreach (var proc in prem.listofprocedures)
                                     {
-                                        string sql_add_proc = $@"INSERT INTO ddt_proc (appointmentno,proccode,availprice) VALUES('{getAppointmentID}',@proccode, (SELECT regprice FROM `ddt_prochdr` WHERE proccode  = @proccode LIMIT 1))";
+                                        string sql_add_proc = $@"INSERT  INTO ddt_lab_req_proc SET req_pk='{getAppointmentID}',proccode=@proccode,procdesc=@procdesc,price=(SELECT regprice FROM `ddt_prochdr` WHERE proccode  = @proccode LIMIT 1),sts_pk='p'";
 
                                         int insert_appointment_procedure = con.Execute(sql_add_proc, proc, transaction: tran);
 
@@ -564,13 +563,13 @@ namespace DeliveryRoomWatcher.Repositories
                                     response.success = true;
                                     response.message = "The Diagnostic Appointment Added sucessfully.";
 
-                                }
-                                else
-                                {
+                                //}
+                                //else
+                                //{
 
-                                    response.success = false;
-                                    response.message = "Error! Insertion of Log Failed.";
-                                }
+                                //    response.success = false;
+                                //    response.message = "Error! Insertion of Log Failed.";
+                                //}
                             }
                             else
                             {
@@ -622,23 +621,25 @@ namespace DeliveryRoomWatcher.Repositories
                         string getAppointmentID = con.QuerySingleOrDefault<string>(AppointmentID, Appointment, transaction: tran);
                         if (getAppointmentID != null)
                         {
-                            int insert_appointment = con.Execute($@"INSERT INTO ddt_appointment (appointmentno,prem_id,prefix,firstname,middlename,lastname,suffix,gender,csid,natid,relid,birthdate,email,mobno,line1,line2,brgycode,provincecode,citymuncode,regioncode,zipcode,reqreason,requestedat)values
-                                                ('{getAppointmentID}',@premid,@prefix,@firstname,@middlename,@lastname,@suffix,@gender,@civil_status,@nationality_code,@religion_code, @birthdate,@email,@mobile,
-                                                @fulladdress,@fulladdress2,@barangay,@province_code,@city_code,@region_code,@zipcode,@reason,NOW())",
+                            int insert_appointment = con.Execute($@"INSERT INTO ddt_lab_req_mast 
+                            SET req_pk='{getAppointmentID}',prem_id=@premid,reason=@reason,prefix=@prefix,first_name=@firstname,middle_name=@middlename
+                            ,last_name=@lastname,suffix=@suffix,gender=@gender,cs_pk=@civil_status_key,cs_desc=@civil_status_desc,nat_pk=@nationality_code,nat_desc=@nationality_code
+                             ,birth_date=@birthdate,email=@email,mob_no=@mobile,local_address=@fulladdress,brgy_pk=@barangay,prov_pk=@province_code
+                            ,city_pk=@city_code,region_pk=@region_code,psgc_address=@psgc_address,zip_code=@zipcode,tran_method='o',req_total_cost=@req_total,requested_at=NOW(),sts_pk='p'",
                                                Appointment, transaction: tran);
                             if (insert_appointment >= 0)
                             {
                               
-                                    int insert_appointment_log = con.Execute($@"INSERT INTO ddt_appointmentlog (appointmentno,logevent,stsid,encodedat,encodedby) VALUES('{getAppointmentID}','request','1',NOW(),@premid)",
-                                              Appointment, transaction: tran);
+                                    //int insert_appointment_log = con.Execute($@"INSERT INTO ddt_appointmentlog (appointmentno,logevent,stsid,encodedat,encodedby) VALUES('{getAppointmentID}','request','1',NOW(),@premid)",
+                                    //          Appointment, transaction: tran);
 
-                                    if (insert_appointment_log >= 0)
-                                    {
+                                    //if (insert_appointment_log >= 0)
+                                    //{
                                     foreach (var proc in Appointment.listofprocedures)
                                     {
                                         int i = Appointment.listofprocedures.Count;
                                         int x = 0;
-                                        string sql_add_proc = $@"INSERT INTO ddt_proc (appointmentno,proccode,availprice) VALUES('{getAppointmentID}',@proccode, (SELECT regprice FROM `ddt_prochdr` WHERE proccode  = @proccode LIMIT 1))";
+                                        string sql_add_proc = $@"INSERT INTO ddt_lab_req_proc SET req_pk='{getAppointmentID}',proccode=@proccode,procdesc=@procdesc,price=(SELECT regprice FROM `ddt_prochdr` WHERE proccode  = @proccode LIMIT 1),sts_pk='p'";
 
                                         int insert_appointment_procedure = con.Execute(sql_add_proc, proc, transaction: tran);
                      
@@ -657,12 +658,12 @@ namespace DeliveryRoomWatcher.Repositories
                                     response.message = "The Diagnostic Appointment Added sucessfully.";
                               
 
-                                } else {
+                                //} else {
 
-                                    response.success = false;
-                                    response.message = "Error! Insertion of Log Failed.";
+                                //    response.success = false;
+                                //    response.message = "Error! Insertion of Log Failed.";
                                         
-                                    }
+                                //    }
                             }
                             else
                             {

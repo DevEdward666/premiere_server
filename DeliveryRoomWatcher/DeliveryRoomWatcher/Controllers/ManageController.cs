@@ -37,9 +37,9 @@ namespace DeliveryRoomWatcher.Controllers
         }
         [HttpPost]
         [Route("api/manage/getEvents")]
-        public ActionResult getuserstable()
+        public ActionResult getuserstable(PEvents.searchableDate date)
         {
-            return Ok(_manage.getEvents());
+            return Ok(_manage.getEvents(date));
         }
         [HttpPost]
         [Route("api/manage/getEventsInfo")]
@@ -52,6 +52,24 @@ namespace DeliveryRoomWatcher.Controllers
         public ActionResult updateevents(PEvents.PEvent events)
         {
             return Ok(_manage.UpdateEvents(events));
+        } 
+        [HttpPost]
+        [Route("api/manage/getEventsBymonth")]
+        public ActionResult getEventsBymonth(PEvents.PEventByMonth events)
+        {
+            return Ok(_manage.getEventsBymonth(events));
+        } 
+        [HttpPost]
+        [Route("api/manage/getEventsthisweek")]
+        public ActionResult getEventsthisweek()
+        {
+            return Ok(_manage.getEventsthisweek());
+        }  
+        [HttpPost]
+        [Route("api/manage/getEventsthisday")]
+        public ActionResult getEventsthisday()
+        {
+            return Ok(_manage.getEventsthisday());
         }
         [HttpPost]
         [Route("api/manage/insertevents")]

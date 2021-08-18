@@ -8,6 +8,7 @@ namespace DeliveryRoomWatcher.Models
     public class mdlNotifications
     {
         public string name { get; set; }
+        public short offset { get; set; }
         public class createnotifications
         {
             public string created_by{ get; set; }

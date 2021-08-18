@@ -138,7 +138,39 @@ namespace DeliveryRoomWatcher.Repositories
                 }
             }
 
-        } 
+        }
+        public ResponseModel getNewsBymonth(PNews.PGetNews month)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT * FROM prem_news WHERE YEAR(DATE(dateEncoded))=@year AND MONTH(DATE(dateEncoded))=@month order by dateEncoded desc limit  @offset",
+                           month, transaction: tran
+                            );
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }
         public ResponseModel getallnewsbyweek(PNews.PGetNewsWeek newsweek)
         {
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))

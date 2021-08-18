@@ -164,6 +164,7 @@ namespace DeliveryRoomWatcher.Controllers
         [Route("api/user/getUserInfo")]
         public ActionResult getUserInfo(PGetUsername username)
         {
+            
             return Ok(_user.getUserInfo(username));
         }
         [HttpPost]

@@ -45,6 +45,7 @@ namespace DeliveryRoomWatcher.Parameters
         {
             public string premid { get; set; }
             public string reason { get; set; }
+            public string req_total_cost { get; set; }
 
             public List<PAddDiagnosticAppointmentProcedure> listofprocedures { get; set; }
 
@@ -58,7 +59,8 @@ namespace DeliveryRoomWatcher.Parameters
             public string lastname { get; set; }
             public string suffix { get; set; }
             public string gender { get; set; }
-            public string civil_status { get; set; }
+            public string civil_status_key { get; set; }
+            public string civil_status_desc { get; set; }
             public string nationality_code { get; set; }
             public string religion_code { get; set; }
             public string birthdate { get; set; }
@@ -73,6 +75,9 @@ namespace DeliveryRoomWatcher.Parameters
             public string city_code { get; set; }
             public string region_code { get; set; }
 
+            public string psgc_address { get; set; }
+            public string req_total { get; set; }
+
             public string zipcode { get; set; }
             public string reason { get; set; }
             public List<PAddDiagnosticAppointmentProcedure> listofprocedures { get; set; }
@@ -83,6 +88,7 @@ namespace DeliveryRoomWatcher.Parameters
             public string premid { get; set; }
             public string reason { get; set; }
             public string proccode { get; set; }
+            public string procdesc { get; set; }
             public string proccost { get; set; }
         } 
  

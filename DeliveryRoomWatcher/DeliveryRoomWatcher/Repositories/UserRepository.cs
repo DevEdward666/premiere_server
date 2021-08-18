@@ -188,7 +188,7 @@ namespace DeliveryRoomWatcher.Repositories
                                 return new ResponseModel
                                 {
                                     success = false,
-                                    message = "Username and Password Not Exist"
+                                    message = "Your Account is Still on Review. We Will Email You Once it's Verified"
                                 };
                             }
                             else
@@ -271,6 +271,7 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
+    
                         var data = con.QuerySingle(
                                         $@"SELECT pu.*,pum.pin,pum.isLocked FROM prem_usersinfo pu JOIN prem_usermaster pum ON pu.prem_id=pum.prem_id where pu.username= @username
                                         ",
