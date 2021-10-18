@@ -238,7 +238,6 @@ E:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3
 E:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.genruntimeconfig.cache
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\appsettings.json
-D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.exe
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.deps.json
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.runtimeconfig.json
@@ -293,11 +292,9 @@ D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bi
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csprojAssemblyReference.cache
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.AssemblyInfoInputs.cache
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.AssemblyInfo.cs
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.RazorTargetAssemblyInfo.cache
-D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.CopyComplete
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\staticwebassets\DeliveryRoomWatcher.StaticWebAssets.Manifest.cache
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\staticwebassets\DeliveryRoomWatcher.StaticWebAssets.xml
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.dll
@@ -305,6 +302,12 @@ D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\ob
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.genruntimeconfig.cache
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\QRCoder.dll
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\FluentFTP.dll
+D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Select.Html.dep
+D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Select.HtmlToPdf.dll
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.CoreCompileInputs.cache
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cs
 D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cache
+D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.AssemblyReference.cache
+D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.GeneratedMSBuildEditorConfig.editorconfig
+D:\New Project\backup\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\scopedcss\bundle\DeliveryRoomWatcher.styles.css

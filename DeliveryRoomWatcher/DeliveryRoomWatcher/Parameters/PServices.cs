@@ -10,9 +10,15 @@ namespace DeliveryRoomWatcher.Parameters
     {
         public class PGetServices
         {
-            [Required]
-            [Display(Name = "Offset")]
             public short offset { get; set; }
+        }
+        public class GetServiceID
+        {
+            public short service_id { get; set; }
+        }
+        public class GetServiceDescID
+        {
+            public short service_desc_id { get; set; }
         }
     }
 }

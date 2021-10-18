@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DeliveryRoomWatcher.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     public class ServicesController : ControllerBase
     {
@@ -41,6 +41,18 @@ namespace DeliveryRoomWatcher.Controllers
         public ActionResult getServices(PServices.PGetServices services)
         {
             return Ok(_services.getServices(services));
+        }
+        [HttpPost]
+        [Route("api/services/getservicesinfo")]
+        public ActionResult getservicesinfo(PServices.GetServiceDescID services)
+        {
+            return Ok(_services.getservicesinfo(services));
+        }
+        [HttpPost]
+        [Route("api/services/getservicesdesc")]
+        public ActionResult getservicesdesc(PServices.GetServiceID services)
+        {
+            return Ok(_services.getservicesdesc(services));
         }
     }
 }

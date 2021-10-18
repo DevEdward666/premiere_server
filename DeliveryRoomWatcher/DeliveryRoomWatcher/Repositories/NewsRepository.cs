@@ -23,9 +23,44 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
-                        var data = con.Query($@"SELECT pn.*,COUNT(pnr.reaction)AS likes FROM prem_news pn  LEFT JOIN prem_news_reaction pnr ON pn.id=pnr.news_id GROUP BY pn.id limit @offset",
-                                             news,transaction: tran);
-                                    
+                        string newsheader = $@"SELECT pn.*,COUNT(pnr.reaction)AS likes,(SELECT news_image FROM prem_news_images WHERE news_id=pn.`id` LIMIT 1) AS Image,
+                                            CASE WHEN (SELECT  COUNT(`comment`) FROM prem_news_comment WHERE news_id=pn.`id` GROUP BY news_id) IS NULL THEN 0 ELSE (SELECT  COUNT(`comment`) 
+                                            FROM prem_news_comment WHERE news_id=pn.`id` GROUP BY news_id) END   AS totalcomments
+                                            FROM prem_news pn  LEFT JOIN prem_news_reaction pnr ON pn.id=pnr.news_id WHERE YEAR(DATE(pn.dateEncoded))=YEAR(CURDATE()) AND MONTH(DATE(pn.dateEncoded))=MONTH(CURDATE()) GROUP BY pn.id 
+                                            ORDER BY pn.dateEncoded DESC limit @offset";
+                        var data = con.Query(newsheader,news,transaction: tran);
+                     
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data,
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }
+        public ResponseModel getallnewsimages(PNews.PGetNews news)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        string newsheader = $@"SELECT * FROM prem_news_images WHERE news_id=@news_id";
+                        var data = con.Query(newsheader, news, transaction: tran);
+
                         return new ResponseModel
                         {
                             success = true,
@@ -44,7 +79,7 @@ namespace DeliveryRoomWatcher.Repositories
                 }
             }
 
-        } 
+        }
         public ResponseModel getallnewsinfo(PNews.PGetNewsInfo news)
         {
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
@@ -85,7 +120,7 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
-                        var data = con.Query($@"SELECT pnc.*,CONCAT(pu.firstname,' ',pu.middlename,' ',pu.lastname)fullname,pu.img FROM prem_news_comment pnc JOIN prem_usersinfo pu ON pnc.commentedby=pu.prem_id WHERE news_id=@news_id",
+                        var data = con.Query($@"SELECT pnc.*,CONCAT(pu.firstname,' ',pu.middlename,' ',pu.lastname)fullname,pu.img FROM prem_news_comment pnc JOIN prem_usersinfo pu ON pnc.commentedby=pu.prem_id WHERE news_id=@news_id ORDER BY commentedat DESC  LIMIT @offset",
                                              comment, transaction: tran);
                        
 

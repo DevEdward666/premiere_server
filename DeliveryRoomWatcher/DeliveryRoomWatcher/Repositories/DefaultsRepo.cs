@@ -13,6 +13,90 @@ namespace DeliveryRoomWatcher.Repositories
 {
     public class DefaultsRepo
     {
+           public ResponseModel GetHospitalName()
+        {
+            try
+            {
+                using MySqlConnection con = new MySqlConnection(DatabaseConfig.GetConnection());
+                con.Open();
+                using var tran = con.BeginTransaction();
+                var data = con.QuerySingle<string>($@"SELECT val FROM `def_val` WHERE remarks = 'hosp_name'"
+                                 , null, transaction: tran);
+                return new ResponseModel
+                {
+                    success = true,
+                    data = data
+                };
+
+            }
+            catch (Exception err)
+            {
+
+                return new ResponseModel
+                {
+                    success = false,
+                    message = err.Message
+                };
+            }
+        }
+
+        public ResponseModel GetHospitalInitial()
+        {
+            try
+            {
+                using MySqlConnection con = new MySqlConnection(DatabaseConfig.GetConnection());
+                con.Open();
+                using var tran = con.BeginTransaction();
+                var data = con.QuerySingle<string>($@"SELECT val FROM `def_val` WHERE remarks = 'hosp_initial'"
+                                 , null, transaction: tran);
+                return new ResponseModel
+                {
+                    success = true,
+                    data = data
+                };
+
+            }
+            catch (Exception err)
+            {
+
+                return new ResponseModel
+                {
+                    success = false,
+                    message = err.Message
+                };
+            }
+        }
+
+        public ResponseModel gettestimonials()
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT * FROM prem_testimonials", transaction: tran);
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }
         public ResponseModel getRegion()
         {
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
@@ -227,6 +311,36 @@ namespace DeliveryRoomWatcher.Repositories
             }
 
         }
+        public ResponseModel getDepartments()
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT * FROM department", transaction: tran);
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        } 
         public ResponseModel getReligion()
         {
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
@@ -257,7 +371,7 @@ namespace DeliveryRoomWatcher.Repositories
             }
 
         }
-        public ResponseModel getProcedures()
+        public ResponseModel getProcedures(PDIagnostics.SearchProcedure search)
         {
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
             {
@@ -266,7 +380,7 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
-                        var data = con.Query($@"SELECT * FROM ddt_prochdr", transaction: tran);
+                        var data = con.Query($@"SELECT * FROM ddt_prochdr where procdesc LIKE CONCAT('%',@procedure,'%')", search, transaction: tran);
 
                         return new ResponseModel
                         {
@@ -296,7 +410,7 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
-                        var data = con.Query($@"SELECT * FROM prem_notifications WHERE audience='all' OR audience=@name ORDER BY createadAt DESC LIMIT @offset", notifications, transaction: tran);
+                        var data = con.Query($@"SELECT * FROM prem_notifications WHERE audience=@name ORDER BY createadAt DESC LIMIT @offset", notifications, transaction: tran);
 
                         return new ResponseModel
                         {
@@ -316,7 +430,37 @@ namespace DeliveryRoomWatcher.Repositories
                 }
             }
 
-        }  
+        }
+        public ResponseModel getnoticationsAll(mdlNotifications notifications)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT * FROM prem_notifications WHERE audience='all' ORDER BY createadAt DESC LIMIT @offset", notifications, transaction: tran);
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }
         public ResponseModel getnoticationsAdmin(mdlNotifications notifications)
         {
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))

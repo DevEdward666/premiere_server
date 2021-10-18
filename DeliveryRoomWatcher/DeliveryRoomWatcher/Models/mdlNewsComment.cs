@@ -16,6 +16,7 @@ namespace DeliveryRoomWatcher.Models
         public class getallcomment
         {
             public string news_id { get; set; }
+            public int offset { get; set; }
         }
     }
 }

@@ -17,6 +17,9 @@ namespace DeliveryRoomWatcher.Models.Common
         public string FileName { get; set; }
         [FromForm(Name = "FormFile")]
         public IFormFile FormFile { get; set; }
+        public string docs { get; set; }
+        public string img { get; set; }
+        public string username { get; set; }
     }
     public class GetFileModel
     {
@@ -26,16 +29,12 @@ namespace DeliveryRoomWatcher.Models.Common
     }
     public class setNewImage
     {
-        [Display(Name = "newsImage")]
+        public string news_id { get; set; }
         public string base64 { get; set; }
-        [Display(Name = "newsTitle")]
         public string title { get; set; }
-        [Display(Name = "newsDescription")]
         public string description { get; set; }
-        [Display(Name = "newsAuthor")]
         public string author { get; set; }
-        [Display(Name = "Image")]
-        public string image { get; set; }
+        public List<IFormFile> image { get; set; }
     }
     public class FileModelProfile
     {
@@ -45,5 +44,8 @@ namespace DeliveryRoomWatcher.Models.Common
         public string FileName { get; set; }
         [FromForm(Name = "FormFile")]
         public IFormFile FormFile { get; set; }
+        public string docs { get; set; }
+        public string img { get; set; }
+        public string username { get; set; }
     }
 }

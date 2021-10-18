@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeliveryRoomWatcher.Models.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,5 +13,6 @@ namespace DeliveryRoomWatcher.Models.User
         public string modid { get; set; }
         public string encodedat { get; set; }
         public string encodedby { get; set; }
+        public ResponseModel resposen { get; set; }
     }
 }

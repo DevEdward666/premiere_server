@@ -9,6 +9,7 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using DeliveryRoomWatcher.Parameters;
 using DeliveryRoomWatcher.Repositories;
+using DeliveryRoomWatcher.Config;
 
 namespace DeliveryRoomWatcher.Controllers
 {
@@ -21,7 +22,7 @@ namespace DeliveryRoomWatcher.Controllers
         public  void sendEmail(string toname,string to) {
             var message = new MimeMessage();
             string hospitalame = company.CompanyName().data.ToString();
-            message.From.Add(new MailboxAddress(hospitalame, "tuosolutions@gmail.com"));
+            message.From.Add(new MailboxAddress(hospitalame, DefaultConfig._providerEmailAddress));
             message.To.Add(new MailboxAddress(toname,to));
             message.Subject = "Account Verified";
 
@@ -34,7 +35,7 @@ namespace DeliveryRoomWatcher.Controllers
                 client.Connect("smtp.gmail.com", 587, false);
 
                 // Note: only needed if the SMTP server requires authentication
-                client.Authenticate("tuosolutions@gmail.com", "Dominion_01");
+                client.Authenticate(DefaultConfig._providerEmailAddress, DefaultConfig._providerEmailPass);
 
                 client.Send(message);
                 client.Disconnect(true);
@@ -46,7 +47,7 @@ namespace DeliveryRoomWatcher.Controllers
         {
             var message = new MimeMessage();
             string hospitalame = company.CompanyName().data.ToString();
-            message.From.Add(new MailboxAddress(hospitalame, "tuosolutions@gmail.com"));
+            message.From.Add(new MailboxAddress(hospitalame, DefaultConfig._providerEmailAddress));
             message.To.Add(new MailboxAddress(toname, to));
             message.Subject = "OTP";
 
@@ -59,7 +60,7 @@ namespace DeliveryRoomWatcher.Controllers
                 client.Connect("smtp.gmail.com", 587,false);
 
            
-                client.Authenticate("tuosolutions@gmail.com", "Dominion_01");
+                client.Authenticate(DefaultConfig._providerEmailAddress, DefaultConfig._providerEmailPass);
 
                 client.Send(message);
                 client.Disconnect(true);

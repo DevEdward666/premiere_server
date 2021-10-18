@@ -15,12 +15,14 @@
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="3.1.5" />
     <PackageReference Include="MySql.Data" Version="8.0.22" />
     <PackageReference Include="QRCoder" Version="1.4.1" />
+    <PackageReference Include="Select.HtmlToPdf.NetCore" Version="21.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Attributes\" />
-    <Folder Include="Resources\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Resources\AppIcons\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
 

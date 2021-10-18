@@ -20,33 +20,43 @@ namespace DeliveryRoomWatcher.Controllers
 
         [HttpPost]
         [Route("api/upload/UploadNewsImage")]
-      
-        public void SaveImage(setNewImage image)
-        {
-            try
-            {
-                var base64img = $@"{image.base64}";
-                string convert = base64img.Replace("data:image/png;base64,", String.Empty);
-                var bytes = Convert.FromBase64String(convert);
-                string filePath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\News\", image.title + ".jpg");
 
-                using (var imageFile = new FileStream(filePath, FileMode.Create))
-                {
-                    imageFile.Write(bytes, 0, bytes.Length);
-                    imageFile.Flush();
-                    _manage.InsertNewNews(image);
-                }
-            }catch(Exception e)
-            {
-                Console.WriteLine(e.Message.ToString());
-            }
-         
+        //public void SaveImage(setNewImage image)
+        //{
+        //    try
+        //    {
+        //        var base64img = $@"{image.base64}";
+        //        string convert = base64img.Replace("data:image/png;base64,", String.Empty);
+        //        var bytes = Convert.FromBase64String(convert);
+        //        string filePath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\News\", image.title + ".jpg");
+
+        //        using (var imageFile = new FileStream(filePath, FileMode.Create))
+        //        {
+        //            imageFile.Write(bytes, 0, bytes.Length);
+        //            imageFile.Flush();
+        //            _manage.InsertNewNews(image);
+        //        }
+        //    }catch(Exception e)
+        //    {
+        //        Console.WriteLine(e.Message.ToString());
+        //    }
+
+        //}
+        public ActionResult SaveImage([FromForm] setNewImage image)
+        {
+            return Ok(_manage.InsertNewNews(image));
         }
         [HttpPost]
         [Route("api/manage/getEvents")]
-        public ActionResult getuserstable(PEvents.searchableDate date)
+        public ActionResult getuserstable()
         {
-            return Ok(_manage.getEvents(date));
+            return Ok(_manage.getEvents());
+        }  
+        [HttpPost]
+        [Route("api/manage/getEventsAdmin")]
+        public ActionResult getEventsAdmin()
+        {
+            return Ok(_manage.getEventsAdmin());
         }
         [HttpPost]
         [Route("api/manage/getEventsInfo")]
@@ -71,6 +81,12 @@ namespace DeliveryRoomWatcher.Controllers
         public ActionResult getEventsthisweek()
         {
             return Ok(_manage.getEventsthisweek());
+        }  
+        [HttpPost]
+        [Route("api/manage/getappdefaults")]
+        public ActionResult getappdefaults()
+        {
+            return Ok(_manage.getappdefaults());
         }  
         [HttpPost]
         [Route("api/manage/getEventsthisday")]

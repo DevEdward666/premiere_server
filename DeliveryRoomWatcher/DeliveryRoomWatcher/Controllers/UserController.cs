@@ -162,6 +162,13 @@ namespace DeliveryRoomWatcher.Controllers
 
 
         [HttpPost]
+        [Route("api/user/getUserinfoAdmin")]
+        public ActionResult getUserinfoAdmin(PGetUsername username)
+        {
+            
+            return Ok(_user.getUserInfoAdmin(username));
+        }    
+        [HttpPost]
         [Route("api/user/getUserInfo")]
         public ActionResult getUserInfo(PGetUsername username)
         {
@@ -281,7 +288,7 @@ namespace DeliveryRoomWatcher.Controllers
                         {
                             images.Save(m, images.RawFormat);
                             byte[] imageBytes = m.ToArray();
-
+                        
 
 
 
@@ -376,6 +383,7 @@ namespace DeliveryRoomWatcher.Controllers
             try
             {
              
+            
                 string path = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}");
                 if (!Directory.Exists(path))
                 {
@@ -385,6 +393,7 @@ namespace DeliveryRoomWatcher.Controllers
                     {
                         file.FormFile.CopyTo(stream);
                     }
+                    file.img = filepath;
                 }
                 else {
                     string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}\", file.FileName);
@@ -392,10 +401,13 @@ namespace DeliveryRoomWatcher.Controllers
                     {
                         file.FormFile.CopyTo(stream);
                     }
-                   
+                    file.docs = $@"Resources\Images\{file.FolderName}\{file.FileName}";
                 }
 
-                return StatusCode(StatusCodes.Status201Created);
+                return Ok(_user.updatedocs(file));
+
+
+                //return StatusCode(StatusCodes.Status201Created);
 
 
 
@@ -423,15 +435,16 @@ namespace DeliveryRoomWatcher.Controllers
             try
             {
 
-                string path = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\\{file.FolderName}");
+                string path = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}");
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
-                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}\", file.FileName);
+                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}\\", file.FileName);
                     using (Stream stream = new FileStream(filepath, FileMode.Create))
                     {
                         file.FormFile.CopyTo(stream);
                     }
+                    file.docs = filepath;
                 }
                 else
                 {
@@ -440,12 +453,14 @@ namespace DeliveryRoomWatcher.Controllers
                     {
                         file.FormFile.CopyTo(stream);
                     }
+                    file.img = $@"Resources\Images\{file.FolderName}\{file.FileName}";
 
                 }
+                return Ok(_user.updateimg(file));
+          
 
-                return StatusCode(StatusCodes.Status201Created);
+                //return StatusCode(StatusCodes.Status201Created);
 
-                return StatusCode(StatusCodes.Status201Created);
             }
             catch (Exception e)
             {

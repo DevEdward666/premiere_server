@@ -21,7 +21,7 @@ namespace DeliveryRoomWatcher.Repositories
                     con.Open();
                     using (var tran = con.BeginTransaction())
                     {
-                        var data = con.Query($@"SELECT q.queueno,q.countername,q.`status` FROM queue q JOIN prem_usermaster pu ON q.`prem_id`=pu.`prem_id` WHERE q.`prem_id`=@prem_id AND q.`status`='Queue' AND q.`countername`=@countername  AND DATE_FORMAT(docdate,'%Y-%m-%d')=DATE_FORMAT(CURDATE(),'%Y-%m-%d')",
+                        var data = con.Query($@"SELECT q.queueno,q.countername,lh.location, q.`status` FROM queue q JOIN prem_usermaster pu ON q.`prem_id`=pu.`prem_id`  JOIN lobbydtls ld ON ld.countername=q.`countername` JOIN lobbyheader lh ON lh.lobbyno=ld.lobbyno WHERE q.`prem_id`=@prem_id AND q.`status`='Queue' AND q.`countername`=@countername AND lh.location!='ALL' AND DATE_FORMAT(q.docdate,'%Y-%m-%d')=DATE_FORMAT(CURDATE(),'%Y-%m-%d')",
                                                  prem_id, transaction: tran);
                         return new ResponseModel
                         {
@@ -149,7 +149,7 @@ namespace DeliveryRoomWatcher.Repositories
                                     return new ResponseModel
 
                                     {
-                                        data = nextQueueNo,
+                                        data = "Thank You",
                                         success = true,
                                         message = "You can only generate queue number once per counter"
                                     };
@@ -158,7 +158,8 @@ namespace DeliveryRoomWatcher.Repositories
                                 {
                                     return new ResponseModel
                                     {
-                                        data = nextQueueNo,
+
+                                        data = "Thank You",
                                         success = false,
                                         message = "You can only generate queue number once per counter"
                                     };
@@ -178,7 +179,7 @@ namespace DeliveryRoomWatcher.Repositories
                                     {
                                         data = nextQueueNo,
                                         success = true,
-                                        message = "Success! The new generated number has been added successfully"
+                                        message = "Queue number listed"
                                     };
                                 }
                                 return new ResponseModel
@@ -186,7 +187,7 @@ namespace DeliveryRoomWatcher.Repositories
                                 {
                                     data = nextQueueNo,
                                     success = true,
-                                    message = "Success! The new generated number has been added successfully"
+                                    message = "Queue number listed"
                                 };
                             }
                         
@@ -246,6 +247,156 @@ namespace DeliveryRoomWatcher.Repositories
             }
 
         }
+        public ResponseModel getcountertype()
+        {
+            try
+            {
+                using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+                {
+                    con.Open();
+                    using (var tran = con.BeginTransaction())
+                    {
+                        var data = con.Query($@"SELECT typename from queue_type ",
+                                                 null, transaction: tran);
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                return new ResponseModel
+                {
+                    success = false,
+                    message = $@"External server error. {e.Message.ToString()}",
+                };
+            }
+
+        }
+        public ResponseModel waitingList(Queue.waiting waitings)
+        {
+            try
+            {
+                using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+                {
+                    con.Open();
+                    using (var tran = con.BeginTransaction())
+                    {
+                        var data = con.Query($@"SELECT * FROM queue WHERE countername=@countername AND STATUS='Queue' and countertype=@countertype AND DATE_FORMAT(docdate,'%Y-%m-%d')=DATE_FORMAT(CURDATE(),'%Y-%m-%d')",
+                                                 waitings, transaction: tran);
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                return new ResponseModel
+                {
+                    success = false,
+                    message = $@"External server error. {e.Message.ToString()}",
+                };
+            }
+
+        }
+        public ResponseModel getqueuno(Queue.getqueues getqueuno)
+        {
+            try
+            {
+                using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+                {
+                    con.Open();
+                    using (var tran = con.BeginTransaction())
+                    {
+                        var data = con.Query($@"SELECT queueno, countername FROM queue WHERE countername = @countername  AND STATUS = 'Queue'  AND countertype=@countertype AND DATE_FORMAT(docdate,'%Y-%m-%d')=DATE_FORMAT(CURDATE(),'%Y-%m-%d') LIMIT 1",
+                                                 getqueuno, transaction: tran);
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                return new ResponseModel
+                {
+                    success = false,
+                    message = $@"External server error. {e.Message.ToString()}",
+                };
+            }
+
+        }
+        public ResponseModel getcounternumber(Queue.getcounterno counterno)
+        {
+            try
+            {
+                using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+                {
+                    con.Open();
+                    using (var tran = con.BeginTransaction())
+                    {
+                        var data = con.Query($@"SELECT counter_name from counters where displayedto=@displayedto",
+                                                 counterno, transaction: tran);
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                return new ResponseModel
+                {
+                    success = false,
+                    message = $@"External server error. {e.Message.ToString()}",
+                };
+            }
+
+        }
+        public ResponseModel getcountermaintable()
+        {
+            try
+            {
+                using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+                {
+                    con.Open();
+                    using (var tran = con.BeginTransaction())
+                    {
+                        var data = con.Query($@"SELECT  countername,countertype from queue_main group by countername",
+                                                 null, transaction: tran);
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                return new ResponseModel
+                {
+                    success = false,
+                    message = $@"External server error. {e.Message.ToString()}",
+                };
+            }
+
+        }
         public ResponseModel generatequeuenumber(Queue.generatenumber generatenumber)
         {
             try
@@ -273,6 +424,122 @@ namespace DeliveryRoomWatcher.Repositories
                     success = false,
                     message = $@"External server error. {e.Message.ToString()}",
                 };
+            }
+
+        }
+        public ResponseModel updatequeue(Queue.UpdateQueue UpdateQueue)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        int isQueueUpdated = con.Execute($@"update queue set status= 'Keep' where queueno=@queueno and countername=@countername  AND DATE_FORMAT(docdate,'%Y-%m-%d')=DATE_FORMAT(CURDATE(),'%Y-%m-%d')",
+                                                UpdateQueue, transaction: tran);
+
+                        if (isQueueUpdated == 1)
+                        {
+                            int isQueueLogInserted = con.Execute($@"insert into queue_log values(@queueno,@counter ,@countername ,NOW(),'KEEP')",
+                                              UpdateQueue, transaction: tran);
+                            if (isQueueLogInserted == 1)
+                            {
+
+                                tran.Commit();
+                                return new ResponseModel
+                                {
+                                    success = true,
+                                    message = "Success! The new spot has been added successfully"
+                                };
+                            }
+                            else
+                            {
+                                return new ResponseModel
+                                {
+                                    success = false,
+                                    message = "Error! No rows affected while inserting the new record."
+                                };
+                            }
+                        }
+                        else
+                        {
+                            return new ResponseModel
+                            {
+                                success = false,
+                                message = "Error! No rows affected while inserting the new housekeeper."
+                            };
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }
+        public ResponseModel updateservedqueue(Queue.UpdateQueue UpdateQueue)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        int isQueueUpdated = con.Execute($@"update queue set status= 'Served' where queueno=@queueno and countername=@countername  AND DATE_FORMAT(docdate,'%Y-%m-%d')=DATE_FORMAT(CURDATE(),'%Y-%m-%d')",
+                                                UpdateQueue, transaction: tran);
+
+                        if (isQueueUpdated >= 1)
+                        {
+                            int isQueueLogInserted = con.Execute($@"insert into queue_log values(@queueno,@counter ,@countername ,NOW(),'SERVED')",
+                                              UpdateQueue, transaction: tran);
+                            if (isQueueLogInserted == 1)
+                            {
+
+                                tran.Commit();
+                                return new ResponseModel
+                                {
+                                    success = true,
+                                    message = "Success! The new spot has been added successfully"
+                                };
+                            }
+                            else
+                            {
+                                return new ResponseModel
+                                {
+                                    success = false,
+                                    message = "Error! No rows affected while inserting the new record."
+                                };
+                            }
+                        }
+                        else
+                        {
+                            return new ResponseModel
+                            {
+                                success = false,
+                                message = "Error! No rows affected while inserting the new housekeeper."
+                            };
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
             }
 
         }

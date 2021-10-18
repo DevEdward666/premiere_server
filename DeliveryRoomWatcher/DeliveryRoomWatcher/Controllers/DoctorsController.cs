@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DeliveryRoomWatcher.Controllers
 {
-   [Authorize]
+   //[Authorize]
     [ApiController]
     public class DoctorsController : ControllerBase
     {

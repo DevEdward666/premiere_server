@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DeliveryRoomWatcher.Models;
+using DeliveryRoomWatcher.Models.Passbase;
 using DeliveryRoomWatcher.Parameters;
 using DeliveryRoomWatcher.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -15,6 +16,18 @@ namespace DeliveryRoomWatcher.Controllers
     {
         DefaultsRepo _default = new DefaultsRepo();
 
+        [HttpPost]
+        [Route("api/default/getwebhooks")]
+        public ActionResult getwebhooks(passbasewebhook webhook)
+        {
+            return Ok(webhook);
+        }   
+        [HttpPost]
+        [Route("api/default/gettestimonials")]
+        public ActionResult gettestimonials()
+        {
+            return Ok(_default.gettestimonials());
+        } 
         [HttpPost]
         [Route("api/default/getregion")]
         public ActionResult getregion()
@@ -57,6 +70,12 @@ namespace DeliveryRoomWatcher.Controllers
             return Ok(_default.getCivilStatus());
         }
         [HttpPost]
+        [Route("api/default/getDepartments")]
+        public ActionResult getDepartments()
+        {
+            return Ok(_default.getDepartments());
+        }   
+        [HttpPost]
         [Route("api/default/getreligion")]
         public ActionResult getReligion()
         {
@@ -64,9 +83,9 @@ namespace DeliveryRoomWatcher.Controllers
         }      
         [HttpPost]
         [Route("api/default/getProcedures")]
-        public ActionResult getProcedures()
+        public ActionResult getProcedures(PDIagnostics.SearchProcedure search)
         {
-            return Ok(_default.getProcedures());
+            return Ok(_default.getProcedures(search));
         } 
         [HttpPost]
         [Route("api/default/insertNotifications")]
@@ -79,6 +98,12 @@ namespace DeliveryRoomWatcher.Controllers
         public ActionResult getnotications(mdlNotifications notifications)
         {
             return Ok(_default.getnotications(notifications));
+        }  
+        [HttpPost]
+        [Route("api/default/getnoticationsAll")]
+        public ActionResult getnoticationsAll(mdlNotifications notifications)
+        {
+            return Ok(_default.getnoticationsAll(notifications));
         }  
         [HttpPost]
         [Route("api/default/getnoticationsAdmin")]

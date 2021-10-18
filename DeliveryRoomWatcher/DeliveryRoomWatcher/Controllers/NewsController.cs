@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DeliveryRoomWatcher.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     public class NewsController : ControllerBase
     {
@@ -21,6 +21,12 @@ namespace DeliveryRoomWatcher.Controllers
         public ActionResult getallnews(PNews.PGetNews news)
         {
             return Ok(_news.getallnews(news));
+        } 
+        [HttpPost]
+        [Route("api/news/getallnewsimages")]
+        public ActionResult getallnewsimages(PNews.PGetNews news)
+        {
+            return Ok(_news.getallnewsimages(news));
         }
         [HttpPost]
         [Route("api/news/getallnewsinfo")]

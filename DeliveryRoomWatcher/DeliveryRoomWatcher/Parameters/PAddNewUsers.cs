@@ -18,7 +18,7 @@ namespace DeliveryRoomWatcher.Parameters
         public string lastname { get; set; }
 
         public string gender { get; set; }
-
+        public string civil_status { get; set; }
         public string birthdate { get; set; }
 
         public string email { get; set; }
@@ -27,6 +27,7 @@ namespace DeliveryRoomWatcher.Parameters
         public string pin { get; set; }
         public string mobileno { get; set; }
         public string region_code { get; set; }
+        public string religion_code { get; set; }
         public string city_code { get; set; }
         public string province_code { get; set; }
  
@@ -38,6 +39,28 @@ namespace DeliveryRoomWatcher.Parameters
        
         public string zipcode { get; set; }
 
+
+    }
+    public class Link_consultation{
+        public string username { get; set; }
+        public string email { get; set; }
+        public string consult_req_pk { get; set; }
+        public string fullname { get; set; }
+
+    } 
+    public class consult_info{
+        public string prem_id { get; set; }
+        public string consult_req_pk { get; set; }
+
+    } 
+    public class Link_consultation_OTP
+    {
+        public string prem_id { get; set; }
+        public string username { get; set; }
+        public string email { get; set; }
+        public string consult_req_pk { get; set; }
+        public string fullname { get; set; }
+        public string otp { get; set; }
 
     }
     public class mdlLocked
@@ -52,6 +75,7 @@ namespace DeliveryRoomWatcher.Parameters
         [StringLength(50)]
         [Display(Name = "Username")]
         public string username { get; set; }
+        public string otp { get; set; }
     }
     public class PAddNewOTP
     {
