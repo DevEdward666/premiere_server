@@ -7980,11 +7980,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
+      "projectName": "DeliveryRoomWatcher",
+      "projectPath": "D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
+      "packagesPath": "C:\\Users\\TUO-Edward\\.nuget\\packages\\",
+      "outputPath": "D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\obj\\",
+=======
       "projectUniqueName": "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
       "projectName": "DeliveryRoomWatcher",
       "projectPath": "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
       "packagesPath": "C:\\Users\\TUO-Edward\\.nuget\\packages\\",
       "outputPath": "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\obj\\",
+>>>>>>> b6c15f3be27916fca84a6545a836a775415c097a
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\TUO-Edward\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8079,5 +8087,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

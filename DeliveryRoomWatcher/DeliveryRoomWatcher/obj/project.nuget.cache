@@ -1,8 +1,18 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "qCm5AQVk85Cmx0E/ITgSOHeyq+0ImeKYAanuRHpLWcgwn0Hx1INLqbRI4pYjBEOnnB13EOPhdAJZ/dTu7B653w==",
+=======
+<<<<<<< HEAD
+  "dgSpecHash": "5RQLNH0yEeUftLYxAYmgVaiLzy+TW0UhltHC1IIxdtb4AZpbq10aPho7uhxeDfwONY3rD5VXeImg85ejHKzeMA==",
+  "success": true,
+  "projectFilePath": "D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
+=======
+  "dgSpecHash": "KDZ2Mcf/kSAOqvO+cw0YpYOLKIdx13KB3qNngsb7vqglSg6ZqACW8bw76PbREvnjR0lPx3me1nR6sbS+btTv3A==",
+>>>>>>> cc68c147e4cf1417590e3682e3a65cecfb8a0468
   "success": true,
   "projectFilePath": "D:\\New Project\\backup\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\DeliveryRoomWatcher.csproj",
+>>>>>>> b6c15f3be27916fca84a6545a836a775415c097a
   "expectedPackageFiles": [
     "C:\\Users\\TUO-Edward\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\TUO-Edward\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
@@ -164,5 +174,12 @@
     "C:\\Users\\TUO-Edward\\.nuget\\packages\\system.xml.xpath\\4.0.1\\system.xml.xpath.4.0.1.nupkg.sha512",
     "C:\\Users\\TUO-Edward\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.0.1\\system.xml.xpath.xmldocument.4.0.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\New Project\\premiere_server\\DeliveryRoomWatcher\\DeliveryRoomWatcher\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
