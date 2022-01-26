@@ -81,7 +81,7 @@ namespace DeliveryRoomWatcher.Models.Clinic
         public DateTime? assign_dept_at { get; set; }
         public ConsultRequestFileEntity consult_req_file { get; set; }
         public StatusMasterEntity status { get; set; }
-        public List<IFormFile> attach_req_files { set; get; }
+        public List<IFormFile> consultation_files { set; get; }
     }
     public class consultationDetails
     {

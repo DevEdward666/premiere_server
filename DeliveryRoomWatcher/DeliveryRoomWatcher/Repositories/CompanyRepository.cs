@@ -47,6 +47,24 @@ namespace DeliveryRoomWatcher.Repositories
                     };
                 }
             }
+        } 
+        public ResponseModel getemployees()
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    var data = con.Query(
+                        $@"SELECT idno,deptcode,firstname,middlename,lastname,`position` FROM empmast",
+                                null, transaction: tran);
+                    return new ResponseModel
+                    {
+                        success = true,
+                        data = data
+                    };
+                }
+            }
         }
 
         public ResponseModel CompanyTagLine()

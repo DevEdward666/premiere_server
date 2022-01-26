@@ -10,13 +10,9 @@ namespace DeliveryRoomWatcher.Models.Common
 {
     public class FileModel
     {
-      
-        [FromForm(Name = "FolderName")]
         public string FolderName{ get; set; }
-        [FromForm(Name = "FileName")]
         public string FileName { get; set; }
-        [FromForm(Name = "FormFile")]
-        public IFormFile FormFile { get; set; }
+        public List<IFormFile> Document_file { get; set; }
         public string docs { get; set; }
         public string img { get; set; }
         public string username { get; set; }
@@ -34,7 +30,21 @@ namespace DeliveryRoomWatcher.Models.Common
         public string title { get; set; }
         public string description { get; set; }
         public string author { get; set; }
-        public List<IFormFile> image { get; set; }
+        public List<IFormFile> news_image { get; set; }
+    } 
+    public class setNew_profile
+    {
+        public string FileName { get; set; }
+        public string img { get; set; }
+        public string username { get; set; }
+        public List<IFormFile> profile_image { get; set; }
+    }   
+    public class setNew_Docs
+    {
+        public string FileName { get; set; }
+        public string img { get; set; }
+        public string username { get; set; }
+        public List<IFormFile> Document_file { get; set; }
     }
     public class FileModelProfile
     {

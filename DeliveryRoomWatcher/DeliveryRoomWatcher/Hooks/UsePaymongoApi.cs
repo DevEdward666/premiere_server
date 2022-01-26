@@ -25,17 +25,18 @@ namespace DeliveryRoomWatcher.Hooks
             PaymongoSourceResourceResponse payment_resource_response = JsonConvert.DeserializeObject<PaymongoSourceResourceResponse>(result_string);
             return payment_resource_response;
         }
-        public static  PaymongoSourceResourceResponse RetrieveSource(string url, string key,string source)
+        public static async Task<PaymongoSourceResourceResponse> RetrieveSource(string url, string key,string source)
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {key}");
-     
+
             var authenticationBytes = Encoding.ASCII.GetBytes($"{key}:");
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(authenticationBytes));
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            var result =  httpClient.GetAsync(url+"/"+source);
-            var result_string = result;
-            PaymongoSourceResourceResponse payment_resource_response = JsonConvert.DeserializeObject<PaymongoSourceResourceResponse>(JsonConvert.SerializeObject(result_string));
+            var result = await httpClient.GetAsync($@"{url}/{source}");
+            var result_string = result.Content.ReadAsStringAsync().Result;
+            PaymongoSourceResourceResponse payment_resource_response = JsonConvert.DeserializeObject<PaymongoSourceResourceResponse>(result_string);
+            //PaymongoSourceResourceResponse payment_resource_response = JsonConvert.DeserializeObject<PaymongoSourceResourceResponse>(JsonConvert.SerializeObject(result_string));
             return payment_resource_response;
         }
     }

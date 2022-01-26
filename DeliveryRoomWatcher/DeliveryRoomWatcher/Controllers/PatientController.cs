@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using DeliveryRoomWatcher.Models;
+using DeliveryRoomWatcher.Models.Clinic;
 using DeliveryRoomWatcher.Parameters;
 using DeliveryRoomWatcher.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -61,14 +62,14 @@ namespace DeliveryRoomWatcher.Controllers
         }
         [HttpPost]
         [Route("api/users/addClinicAppointment")]
-        public IActionResult addClinicAppointment([FromForm] Models.Clinic.ClinicModel prem)
+        public IActionResult addClinicAppointment([FromForm] ClinicModel prem)
         {
 
             return Ok(_patients.addClinicAppointment(prem));
         }
         [HttpPost]
         [Route("api/users/addClinicAppointmentOthers")]
-        public ActionResult addClinicAppointmentOthers([FromForm]  Models.Clinic.ClinicModel prem)
+        public ActionResult addClinicAppointmentOthers([FromForm]  ClinicModel prem)
         {
 
             return Ok(_patients.addClinicAppointmentOthers(prem));

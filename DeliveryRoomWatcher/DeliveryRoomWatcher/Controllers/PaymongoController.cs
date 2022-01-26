@@ -59,7 +59,11 @@ namespace DeliveryRoomWatcher.Controllers
         {
             return Ok(await paymongo_repo.CreatePaymentIntentAsync(payload));
         }
-
+        [HttpPost]
+        public async Task<IActionResult> PaidPaymentIntentAsync(PaymongoEwalletPayload payload)
+        {
+            return Ok(await paymongo_repo.PaidPaymentIntentAsync(payload));
+        }
         //RECORDS
         [HttpPost]
         public IActionResult GetTablePaymongoLog(PaymongoTablePayload payload)

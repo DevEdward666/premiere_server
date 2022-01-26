@@ -81,17 +81,28 @@ namespace DeliveryRoomWatcher.Models
 
             //card payment
             public string payment_intent_id { get; set; }
+            public string payment_method_id { get; set; }
+
             public string origin { get; set; }
             public string tax_amount { get; set; }
             public List<dynamic> refunds { get; set; }
             public List<dynamic> taxes { get; set; }
+            public PaymongoCardNextAction next_action { get; set; }
             public string access_url { get; set; }
             public string client_key { get; set; }
 
 
 
         }
-
+        public class PaymongoCardNextAction
+        {
+            public string type { get; set; }
+            public PaymongoCardRedirect redirect { get; set; }
+        }
+        public class PaymongoCardRedirect
+        {
+            public string url { get; set; }
+        }
         public class PaymongoCardSource
         {
             public string id { get; set; }

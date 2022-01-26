@@ -64,11 +64,10 @@ namespace DeliveryRoomWatcher.Parameters
             [Display(Name = "EventID")]
             public long evid { get; set; }
             [Required]
-            [StringLength(30)]
             [Display(Name = "EventTitle")]
             public string evtitle { get; set; }
             [Required]
-            [StringLength(30)]
+        
             [Display(Name = "EventDesc")]
             public string evdesc { get; set; }
 

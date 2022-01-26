@@ -1,5 +1,7 @@
 ﻿using DeliveryRoomWatcher.Filters;
+using DeliveryRoomWatcher.Models;
 using DeliveryRoomWatcher.Models.Common;
+using DeliveryRoomWatcher.Models.Doctors;
 using DeliveryRoomWatcher.Models.User;
 using DeliveryRoomWatcher.Parameters;
 using DeliveryRoomWatcher.Providers;
@@ -40,6 +42,48 @@ namespace DeliveryRoomWatcher.Controllers
         {
 
             List<UserModel> user = _user.authenticateUser(cred);
+
+            int userLength = user.Count;
+
+            if (userLength > 0)
+            {
+
+                var claims = new Claim[user.Count + 1];
+
+
+
+                for (int i = 0; i < user.Count; i++)
+                {
+                    claims[i] = new Claim(ClaimTypes.Role, user[i].username);
+                }
+
+                claims[user.Count] = new Claim(ClaimTypes.Name, user[userLength - 1].username);
+
+                var jwtResult = _jwtAuthManager.GenerateTokens(user[userLength - 1].username, claims, DateTime.Now);
+                //var jwtResult = _jwtAuthManager.GenerateTokens(user[userLength - 1].username, claims, DateTime.Now);
+
+                return Ok(new ResponseModel
+                {
+                    success = true,
+                    data = new
+                    {
+                        access_token = jwtResult.AccessToken,
+                        refresh_token = jwtResult.RefreshToken.TokenString
+                    }
+                });
+
+            }
+            else
+            {
+                return Ok(new { success = false, message = "The username and/or password you entered is not correct. Please try again," });
+            }
+        }      
+        [HttpPost]
+        [Route("api/user/logindoctor")]
+        public ActionResult logindoctor(PAuthUser cred)
+        {
+
+            List<UserModel> user = _user.authenticateDoctor(cred);
 
             int userLength = user.Count;
 
@@ -162,6 +206,13 @@ namespace DeliveryRoomWatcher.Controllers
 
 
         [HttpPost]
+        [Route("api/user/getDoctorInfo")]
+        public ActionResult getDoctorInfo(Doctors_info.get_info info)
+        {
+            
+            return Ok(_user.getDoctorInfo(info));
+        }   
+        [HttpPost]
         [Route("api/user/getUserinfoAdmin")]
         public ActionResult getUserinfoAdmin(PGetUsername username)
         {
@@ -190,6 +241,19 @@ namespace DeliveryRoomWatcher.Controllers
         }
          
         [HttpPost]
+        [Route("api/user/getDoctorsExist")]
+        public ActionResult getDoctorsExist(GetDoctorIdno idno)
+        {
+            return Ok(_user.getDoctorsExist(idno));
+        }     
+        [HttpPost]
+        [Route("api/user/getDoctorsUsernameExist")]
+        public ActionResult getDoctorsUsernameExist(PGetUsername username)
+        {
+            return Ok(_user.getDoctorsUsernameExist(username));
+        }
+           
+        [HttpPost]
         [Route("api/user/getUsernameExist")]
         public ActionResult getUsernameExist(PGetUsername username)
         {
@@ -197,6 +261,20 @@ namespace DeliveryRoomWatcher.Controllers
         }
 
 
+        [HttpPost]
+        [Route("api/user/InserNewDoctor")]
+        public ActionResult InserNewDoctor(DoctorModel adduser)
+        {
+          
+            return Ok(_user.InserNewDoctor(adduser));
+        }   
+        [HttpPost]
+        [Route("api/user/getDoctorUserOTP")]
+        public ActionResult getDoctorUserOTP(PGetUsername adduser)
+        {
+          
+            return Ok(_user.getDoctorUserOTP(adduser));
+        }    
         [HttpPost]
         [Route("api/user/addnewuser")]
         public ActionResult InserNewUser(PAddNewUsers adduser)
@@ -212,6 +290,22 @@ namespace DeliveryRoomWatcher.Controllers
             return Ok(_user.InserNewOTP(addotp));
         }      
         [HttpPost]
+        [Route("api/user/deletelastOTP")]
+        public ActionResult deletelastOTP(mdlLocked username)
+        {
+          
+            return Ok(_user.deletelastOTP(username));
+        }
+             
+        [HttpPost]
+        [Route("api/user/update_password")]
+        public ActionResult update_password(mdlupdatepassword updatepassword)
+        {
+          
+            return Ok(_user.update_password(updatepassword));
+        }
+             
+        [HttpPost]
         [Route("api/user/updatelockeduser")]
         public ActionResult updatelockeduser(mdlLocked username)
         {
@@ -220,10 +314,22 @@ namespace DeliveryRoomWatcher.Controllers
         }
 
         [HttpPost]
+        [Route("api/user/getcurrentotp")]
+        public ActionResult getcurrentotp(UserModel.getCurrentOtp currentOtp)
+        {
+            return Ok(_user.getcurrentotp(currentOtp));
+        }      
+        [HttpPost]
         [Route("api/user/getUserOTP")]
         public ActionResult getUserOTP(PGetUsername username)
         {
             return Ok(_user.getUserOTP(username));
+        }      
+        [HttpPost]
+        [Route("api/user/OTP_for_UpdatePassword")]
+        public ActionResult OTP_for_UpdatePassword(PAddNewOTP user_info)
+        {
+            return Ok(_user.OTP_for_UpdatePassword(user_info));
         }
 
         [HttpPost]
@@ -231,17 +337,23 @@ namespace DeliveryRoomWatcher.Controllers
         public ActionResult getUserMobile(PGetUsername username)
         {
             return Ok(_user.getUserMobile(username));
+        }     
+        [HttpPost]
+        [Route("api/user/UpdateUserImage")]
+        public ActionResult UpdateUserImage([FromForm] UserModel.setUserImage userImage)
+        {
+            return Ok(_user.UpdateUserImage(userImage));
         }
         [HttpPost]
         [Route("api/user/getimage")]
  
-        public ResponseModel getimage(string username)
+        public ResponseModel getimage(string filename)
         {
          
               
                 try
                 {
-                string path = Path.Combine(Directory.GetCurrentDirectory(), username);
+                string path = Path.Combine(Directory.GetCurrentDirectory(), filename);
                 using (Image images = Image.FromFile(path))
                     {
                         using (MemoryStream m = new MemoryStream())
@@ -267,8 +379,6 @@ namespace DeliveryRoomWatcher.Controllers
                                 message = "Error: "+e.ToString()
                             };
 
-                    //    var image = System.IO.File.OpenRead(path);
-                    //return File(image, "image/jpeg");
                 }
             }
          
@@ -277,11 +387,11 @@ namespace DeliveryRoomWatcher.Controllers
         [HttpPost]
         [Route("api/user/getimageDocs")]
   
-        public ResponseModel getimageDocs(string username)
+        public ResponseModel getimageDocs(string filename)
         {
                 try
                 {
-                string path = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{username}\{username}_VerificationDocs.jpg");
+                string path = Path.Combine(Directory.GetCurrentDirectory(), filename);
                 using (Image images = Image.FromFile(path))
                     {
                         using (MemoryStream m = new MemoryStream())
@@ -308,9 +418,7 @@ namespace DeliveryRoomWatcher.Controllers
                     message = "Error: " + e.ToString()
                 };
             }
-                //var image = System.IO.File.OpenRead(path );
-                //return File(image, "image/jpeg");
-            
+              
 
         }
         [Route("api/user/getResultsPDF")]
@@ -331,91 +439,12 @@ namespace DeliveryRoomWatcher.Controllers
             }
             return null;
         }
-
-        //[HttpPost("api/user/UploadFile")]
-        //public async Task<string> UploadFile([FromForm] IFormFile file)
-        //{
-        //    string fName = file.FileName;
-        //    string path = Path.Combine(Directory.GetCurrentDirectory(), "Resources\\Images\\" + file.FileName);
-        //    using (var stream = new FileStream(path, FileMode.Create))
-        //    {
-        //        await file.CopyToAsync(stream);
-        //    }
-        //    return file.FileName;
-        //}
-        //[HttpPost("api/user/UploadFile"), DisableRequestSizeLimit]
-        //public ActionResult Upload()
-        //{
-        //    try
-        //    {
-        //        var file = Request.Form.Files[0];
-        //        var folderName = Path.Combine("Resources", "Images");
-        //        var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-
-        //        if (file.Length > 0)
-        //        {
-        //            var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-        //            var fullPath = Path.Combine(pathToSave, fileName);
-        //            var dbPath = Path.Combine(folderName, fileName);
-
-        //            using (var stream = new FileStream(fullPath, FileMode.Create))
-        //            {
-        //                file.CopyTo(stream);
-        //            }
-
-        //            return Ok(new { dbPath });
-        //        }
-        //        else
-        //        {
-        //            return BadRequest();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, $"Internal server error: {ex}");
-        //    }
-        //}
-
         [HttpPost] 
         [Route("api/user/UploadFile")]
-        public ActionResult Post([FromForm] FileModel file)
+        public IActionResult UploadFile([FromForm] setNew_Docs file)
         {
-            try
-            {
-             
-            
-                string path = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}");
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}\\", file.FileName);
-                    using (Stream stream = new FileStream(filepath, FileMode.Create))
-                    {
-                        file.FormFile.CopyTo(stream);
-                    }
-                    file.img = filepath;
-                }
-                else {
-                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}\", file.FileName);
-                    using (Stream stream = new FileStream(filepath, FileMode.Create))
-                    {
-                        file.FormFile.CopyTo(stream);
-                    }
-                    file.docs = $@"Resources\Images\{file.FolderName}\{file.FileName}";
-                }
-
-                return Ok(_user.updatedocs(file));
-
-
-                //return StatusCode(StatusCodes.Status201Created);
-
-
-
-            }
-            catch(Exception e)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
+            return Ok(_user.updatedocs(file));
+          
         }
 
 
@@ -430,42 +459,10 @@ namespace DeliveryRoomWatcher.Controllers
 
         [HttpPost]
         [Route("api/user/UploadFileProfile")]
-        public ActionResult UploadFileProfile([FromForm] FileModelProfile file)
+        public IActionResult UploadFileProfile([FromForm] setNew_profile file)
         {
-            try
-            {
-
-                string path = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}");
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}\\", file.FileName);
-                    using (Stream stream = new FileStream(filepath, FileMode.Create))
-                    {
-                        file.FormFile.CopyTo(stream);
-                    }
-                    file.docs = filepath;
-                }
-                else
-                {
-                    string filepath = Path.Combine(Directory.GetCurrentDirectory(), $@"Resources\Images\{file.FolderName}\", file.FileName);
-                    using (Stream stream = new FileStream(filepath, FileMode.Create))
-                    {
-                        file.FormFile.CopyTo(stream);
-                    }
-                    file.img = $@"Resources\Images\{file.FolderName}\{file.FileName}";
-
-                }
-                return Ok(_user.updateimg(file));
-          
-
-                //return StatusCode(StatusCodes.Status201Created);
-
-            }
-            catch (Exception e)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
+            return Ok(_user.updateimg(file));
+        
         }
 
     }

@@ -2,6 +2,8 @@
 using DeliveryRoomWatcher.Config;
 using DeliveryRoomWatcher.Models;
 using DeliveryRoomWatcher.Models.Common;
+using DeliveryRoomWatcher.Models.FCM;
+using DeliveryRoomWatcher.Models.User;
 using DeliveryRoomWatcher.Parameters;
 using MySql.Data.MySqlClient;
 using System;
@@ -189,6 +191,96 @@ namespace DeliveryRoomWatcher.Repositories
                 }
             }
 
+        } 
+        public ResponseModel gettokens()
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT token FROM prem_fcm_user_token", null, transaction: tran);
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }   
+        public ResponseModel getSpecificToken(UserModel.getoken token)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT token FROM prem_fcm_user_token WHERE user_id=@user_id", token, transaction: tran);
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }      
+        public ResponseModel getSpecificTokenAdmin(UserModel.getoken token)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT token FROM prem_fcm_user_token WHERE user_id=@user_id", token, transaction: tran);
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
         }
         public ResponseModel getNationality()
         {
@@ -320,7 +412,7 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
-                        var data = con.Query($@"SELECT * FROM department", transaction: tran);
+                        var data = con.Query($@"SELECT * FROM prem_dept", transaction: tran);
 
                         return new ResponseModel
                         {
@@ -380,7 +472,7 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
-                        var data = con.Query($@"SELECT * FROM ddt_prochdr where procdesc LIKE CONCAT('%',@procedure,'%')", search, transaction: tran);
+                        var data = con.Query($@"SELECT * FROM ddt_prochdr where procdesc LIKE CONCAT('%',@procedure,'%') limit 10", search, transaction: tran);
 
                         return new ResponseModel
                         {
@@ -410,7 +502,11 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
-                        var data = con.Query($@"SELECT * FROM prem_notifications WHERE audience=@name ORDER BY createadAt DESC LIMIT @offset", notifications, transaction: tran);
+                        var data = con.Query($@"  
+  SELECT id,title,body,priority,audience, CASE WHEN (SELECT fullname FROM prem_usermaster WHERE prem_id=createdBy) IS NOT NULL THEN (SELECT fullname FROM prem_usermaster WHERE prem_id=createdBy) 
+  WHEN (SELECT fullname FROM prem_usermaster WHERE prem_id=createdBy) IS NULL THEN 
+  (SELECT empname FROM usermaster WHERE username=createdBy)  END AS createdBy,
+  published,createadAt FROM prem_notifications WHERE audience='all' || audience= @name ORDER BY createadAt DESC LIMIT @offset", notifications, transaction: tran);
 
                         return new ResponseModel
                         {
@@ -440,7 +536,11 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
-                        var data = con.Query($@"SELECT * FROM prem_notifications WHERE audience='all' ORDER BY createadAt DESC LIMIT @offset", notifications, transaction: tran);
+                        var data = con.Query($@"  
+  SELECT id,title,body,priority,audience, CASE WHEN (SELECT fullname FROM prem_usermaster WHERE prem_id=createdBy) IS NOT NULL THEN (SELECT fullname FROM prem_usermaster WHERE prem_id=createdBy) 
+  WHEN (SELECT fullname FROM prem_usermaster WHERE prem_id=createdBy) IS NULL THEN 
+  SELECT empname FROM usermaster WHERE username=createdBy)  END AS createdBy,
+  published,createadAt FROM prem_notifications WHERE audience='all' ORDER BY createadAt desc LIMIT @offset", notifications, transaction: tran);
 
                         return new ResponseModel
                         {
@@ -532,7 +632,7 @@ namespace DeliveryRoomWatcher.Repositories
                     {
 
 
-                        int insert_user_otp = con.Execute($@"INSERT INTO prem_notifications (title,body,priority,audience,createdBy) values(@title,@body,@priority,@audience,@created_by) ",
+                        int insert_user_otp = con.Execute($@"INSERT INTO prem_notifications (title,body,priority,audience,createdBy,createadAt) values(@title,@body,@priority,@audience,@created_by,NOW()) ",
                                                notifications, transaction: tran);
                         if (insert_user_otp >= 0)
                         {
@@ -554,6 +654,119 @@ namespace DeliveryRoomWatcher.Repositories
                         }
 
 
+
+
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+        }  
+        public ResponseModel insertFCMToken(NotificationModel.inserttoken inserttoken)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        string settoken = $@"SELECT token FROM prem_fcm_user_token WHERE user_id=@user_id";
+                        string gettoken = con.QuerySingleOrDefault<string>(settoken, inserttoken, transaction: tran);
+                      
+                        string setmodel = $@"SELECT phone_model FROM prem_fcm_user_token WHERE user_id=@user_id";
+                        string getmodel = con.QuerySingleOrDefault<string>(setmodel, inserttoken, transaction: tran);
+                    
+                        if (gettoken == null)
+                        {
+                            int insert_new_token = con.Execute($@"INSERT INTO prem_fcm_user_token SET user_id=@user_id,token=@token,phone_brand=@phone_brand,phone_model=@phone_model,createdAt=NOW()",
+                                               inserttoken, transaction: tran);
+                            if (insert_new_token >= 0)
+                            {
+                                tran.Commit();
+                                return new ResponseModel
+                                {
+                                    success = true,
+                                    message = "Updated"
+                                };
+
+                            }
+                            else
+                            {
+                                return new ResponseModel
+                                {
+                                    success = false,
+                                    message = "Error! Insert usermaster Failed."
+                                };
+                            }
+
+                        }
+                        else
+                        {
+                           
+                            if (gettoken!= inserttoken.token && getmodel==inserttoken.phone_model)
+                            {
+                                int update_new_token = con.Execute($@"update prem_fcm_user_token SET token=@token,phone_brand=@phone_brand,phone_model=@phone_model,createdAt=NOW() where user_id=@user_id",
+                                              inserttoken, transaction: tran);
+                                if (update_new_token >= 0)
+                                {
+                                    tran.Commit();
+                                    return new ResponseModel
+                                    {
+                                        success = true,
+                                        message = "Updated"
+                                    };
+
+                                }
+                                else
+                                {
+                                    return new ResponseModel
+                                    {
+                                        success = false,
+                                        message = "Error! Insert usermaster Failed."
+                                    };
+                                }
+                            }
+                            else if(gettoken != inserttoken.token && getmodel != inserttoken.phone_model)
+                            {
+                                int insert_new_token_from_other_device = con.Execute($@"INSERT INTO prem_fcm_user_token SET user_id=@user_id,token=@token,phone_brand=@phone_brand,phone_model=@phone_model,createdAt=NOW()",
+                                          inserttoken, transaction: tran);
+                                if (insert_new_token_from_other_device >= 0)
+                                {
+                                    tran.Commit();
+                                    return new ResponseModel
+                                    {
+                                        success = true,
+                                        message = "Updated"
+                                    };
+
+                                }
+                                else
+                                {
+                                    return new ResponseModel
+                                    {
+                                        success = false,
+                                        message = "Error! Insert usermaster Failed."
+                                    };
+                                }
+                            }
+                            else
+                            {
+                                tran.Rollback();
+                                return new ResponseModel
+                                {
+                                    success = false,
+                                    message = "No tokens need to update"
+                                };
+                            }
+                        }
 
 
                     }

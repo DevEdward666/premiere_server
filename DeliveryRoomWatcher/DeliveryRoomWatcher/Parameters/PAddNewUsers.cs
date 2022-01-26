@@ -63,6 +63,12 @@ namespace DeliveryRoomWatcher.Parameters
         public string otp { get; set; }
 
     }
+    public class mdlupdatepassword
+    {
+        
+        public string username { get; set; }
+        public string password { get; set; }
+    }    
     public class mdlLocked
     {
         
@@ -71,9 +77,7 @@ namespace DeliveryRoomWatcher.Parameters
     }
     public class PGetUsername
     {
-        [Required]
-        [StringLength(50)]
-        [Display(Name = "Username")]
+      
         public string username { get; set; }
         public string otp { get; set; }
     }

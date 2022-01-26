@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using DeliveryRoomWatcher.Config;
+using DeliveryRoomWatcher.Hooks;
 using DeliveryRoomWatcher.Models;
 using DeliveryRoomWatcher.Models.Common;
 using DeliveryRoomWatcher.Parameters;
@@ -26,8 +27,13 @@ namespace DeliveryRoomWatcher.Repositories
                         string newsheader = $@"SELECT pn.*,COUNT(pnr.reaction)AS likes,(SELECT news_image FROM prem_news_images WHERE news_id=pn.`id` LIMIT 1) AS Image,
                                             CASE WHEN (SELECT  COUNT(`comment`) FROM prem_news_comment WHERE news_id=pn.`id` GROUP BY news_id) IS NULL THEN 0 ELSE (SELECT  COUNT(`comment`) 
                                             FROM prem_news_comment WHERE news_id=pn.`id` GROUP BY news_id) END   AS totalcomments
-                                            FROM prem_news pn  LEFT JOIN prem_news_reaction pnr ON pn.id=pnr.news_id WHERE YEAR(DATE(pn.dateEncoded))=YEAR(CURDATE()) AND MONTH(DATE(pn.dateEncoded))=MONTH(CURDATE()) GROUP BY pn.id 
+                                            FROM prem_news pn  LEFT JOIN prem_news_reaction pnr ON pn.id=pnr.news_id GROUP BY pn.id 
                                             ORDER BY pn.dateEncoded DESC limit @offset";
+                        //string newsheader = $@"SELECT pn.*,COUNT(pnr.reaction)AS likes,(SELECT news_image FROM prem_news_images WHERE news_id=pn.`id` LIMIT 1) AS Image,
+                        //                    CASE WHEN (SELECT  COUNT(`comment`) FROM prem_news_comment WHERE news_id=pn.`id` GROUP BY news_id) IS NULL THEN 0 ELSE (SELECT  COUNT(`comment`) 
+                        //                    FROM prem_news_comment WHERE news_id=pn.`id` GROUP BY news_id) END   AS totalcomments
+                        //                    FROM prem_news pn  LEFT JOIN prem_news_reaction pnr ON pn.id=pnr.news_id WHERE YEAR(DATE(pn.dateEncoded))=YEAR(CURDATE()) AND MONTH(DATE(pn.dateEncoded))=MONTH(CURDATE()) GROUP BY pn.id 
+                        //                    ORDER BY pn.dateEncoded DESC limit @offset";
                         var data = con.Query(newsheader,news,transaction: tran);
                      
                         return new ResponseModel
@@ -395,6 +401,147 @@ namespace DeliveryRoomWatcher.Repositories
                 }
             }
 
+        }
+        public ResponseModel UpdateNews(setNewImage create_news)
+        {
+
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        int update_news = con.Execute($@"update prem_news set Title=@title,description=@description,author=@author,dateEncoded=now() where id=@news_id",
+                                    create_news, transaction: tran);
+                        if (update_news >= 0)
+                        {
+                            foreach (var f in create_news.news_image)
+                            {
+                                FileResponseModel file_upload_response = new FileResponseModel
+                                {
+                                    success = true
+                                };
+
+                                var proc_file_payload = new NewsFileEntity()
+                                {
+                                    news_id = create_news.news_id
+                                };
+
+                                file_upload_response = UseLocalFiles.UploadLocalFile(f, $@"Resources\News\{create_news.news_id}\", create_news.title); ;
+                                if (!file_upload_response.success)
+                                {
+                                    return new ResponseModel
+                                    {
+                                        success = false,
+                                        message = file_upload_response.message
+                                    };
+                                }
+                                else
+                                {
+                                    proc_file_payload.news_image = file_upload_response.data.path;
+                                    proc_file_payload.news_image_name = file_upload_response.data.name;
+                                }
+
+
+                                int update_file = con.Execute(@"
+                                update  `prem_news_images` 
+                                SET 
+                                news_image=@news_image,
+                                news_image_name=@news_image_name,
+                                dateEncoded=NOW() where  news_id=@news_id;",
+                                              proc_file_payload, transaction: tran);
+
+                                if (update_file <= 0)
+                                {
+                                    tran.Rollback();
+                                    return new ResponseModel
+                                    {
+                                        success = false,
+                                        message = $"The {f.FileName} could not be saved! Please try again!"
+                                    };
+                                }
+
+
+                                if (update_file <= 0)
+                                {
+                                    tran.Rollback();
+                                    return new ResponseModel
+                                    {
+                                        success = false,
+                                        message = $"The {create_news.title} could not be saved! Please try again!"
+                                    };
+                                }
+
+                            }
+                        }
+                        tran.Commit();
+                        return new ResponseModel
+                        {
+                            success = true,
+                            message = "News updated sucessfully."
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+
+                }
+            }
+        }
+
+        public ResponseModel UpdateNewsWithoutImage(setNewImage create_news)
+        {
+
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+
+                        int update_news = con.Execute($@"update prem_news set Title=@title,description=@description,author=@author,dateEncoded=now() where id=@news_id",
+                            create_news, transaction: tran);
+
+
+
+                        if (update_news <= 0)
+                        {
+                            tran.Rollback();
+                            return new ResponseModel
+                            {
+                                success = false,
+                                message = $"The {create_news.title} could not be saved! Please try again!"
+                            };
+                        }
+
+
+                        tran.Commit();
+                        return new ResponseModel
+                        {
+                            success = true,
+                            message = "News updated sucessfully."
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+
+                }
+            }
         }
 
 

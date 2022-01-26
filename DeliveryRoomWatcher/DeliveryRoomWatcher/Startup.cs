@@ -1,5 +1,8 @@
+using CorePush.Apple;
+using CorePush.Google;
 using DeliveryRoomWatcher.Config;
 using DeliveryRoomWatcher.Hubs;
+using DeliveryRoomWatcher.Models.FCM;
 using DeliveryRoomWatcher.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,6 +41,9 @@ namespace DeliveryRoomWatcher
             DefaultConfig._providerEmailAddress = Configuration["EMAIL:_providerEmailAddress"];
             DefaultConfig._providerEmailPass = Configuration["EMAIL:_providerEmailPass"];
             DefaultConfig._clientBaseUrl = Configuration["EMAIL:_clientBaseUrl"];
+
+            DefaultConfig.ServerKey = Configuration["FcmNotificationSetting:ServerKey"];
+            DefaultConfig.SenderId = Configuration["FcmNotificationSetting:SenderId"];
         }
 
         public IConfiguration Configuration { get; }
@@ -55,6 +61,12 @@ namespace DeliveryRoomWatcher
             });
             services.InstallServicesInAssembly(Configuration);
             services.AddSignalR();
+            services.AddTransient<INotificationService, NotificationService>();
+            services.AddHttpClient<FcmSender>();
+            services.AddHttpClient<ApnSender>();
+            var appSettingsSection = Configuration.GetSection("FcmNotification");
+            services.Configure<FcmNotificationSetting>(appSettingsSection);
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -114,6 +126,18 @@ namespace DeliveryRoomWatcher
             {
                 FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Resources/Announcements")),
                 RequestPath = "/Resources/Announcements"
+
+            });      
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Resources/UserImages")),
+                RequestPath = "/Resources/UserImages"
+
+            });
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Resources/Meetings")),
+                RequestPath = "/Resources/Meetings"
 
             });
             app.UseAuthentication();

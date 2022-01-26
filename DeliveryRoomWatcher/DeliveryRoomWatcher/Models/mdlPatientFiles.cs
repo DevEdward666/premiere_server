@@ -20,5 +20,6 @@ namespace DeliveryRoomWatcher.Models
             public string type { get; set; }
             public string deviceStored { get; set; }
         }
+    
     }
 }

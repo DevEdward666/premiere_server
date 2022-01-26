@@ -9,6 +9,7 @@ using System.IO;
 using System.Net;
 using DeliveryRoomWatcher.Config;
 using DeliveryRoomWatcher.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace DeliveryRoomWatcher.Hooks
 {
@@ -173,7 +174,8 @@ namespace DeliveryRoomWatcher.Hooks
                     message = $"An error has occured while sending the verification link to the patient. {e.Message}"
                 };
             }
-        }
+        }   
+      
 
     }
 }

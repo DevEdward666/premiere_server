@@ -30,7 +30,7 @@ namespace DeliveryRoomWatcher.Hooks
                     if (!Directory.Exists(path))
                     {
                         Directory.CreateDirectory(path);
-                        string filepath = Path.Combine(Directory.GetCurrentDirectory(),file_path+"/"+ unique_file_name).Replace("\\", "/");
+                        string filepath = Path.Combine(Directory.GetCurrentDirectory(),file_path+ unique_file_name).Replace("\\", "/");
                         string savefilepath = file_path + unique_file_name.Replace("\\", "/");
                         using (Stream stream = new FileStream(filepath, FileMode.Create))
                         {
@@ -53,7 +53,7 @@ namespace DeliveryRoomWatcher.Hooks
                     }
                     else
                     {
-                        string filepath = Path.Combine(Directory.GetCurrentDirectory(), file_path + "/" + unique_file_name).Replace('\\', '/');
+                        string filepath = Path.Combine(Directory.GetCurrentDirectory(), file_path + unique_file_name).Replace('\\', '/');
                         string savefilepath = file_path  + unique_file_name.Replace("\\", "/");
                         using (Stream stream = new FileStream(filepath, FileMode.Create))
                         {

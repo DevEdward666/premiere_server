@@ -8,8 +8,8 @@ namespace DeliveryRoomWatcher.Config
     public static class DefaultConfig
     {
         public static string app_name;
-        public static string _providerEmailAddress = "tuoitsolutions@gmail.com";
-        public static string _providerEmailPass = "thisismy name@2015";
+        public static string _providerEmailAddress = "	tuoitsolutions@gmail.com";
+        public static string _providerEmailPass = "Dominion_01";
         public static string _clientBaseUrl = "http://89.107.58.254:60315/payment/";
 
         public static string ftp_ip;
@@ -28,5 +28,8 @@ namespace DeliveryRoomWatcher.Config
         public static string passbase_secret_key;
         public static string passbase_verification_url;
 
+
+        public static string ServerKey;
+        public static string SenderId;
     }
 }

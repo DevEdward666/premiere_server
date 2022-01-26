@@ -11,7 +11,8 @@ namespace DeliveryRoomWatcher.Payloads
     {
         public class PaymongoEwalletPayload
         {
-            public string consult_req_pk { get; set; }
+            public string id { get; set; }
+            public string transaction_pk { get; set; }
             public string type { get; set; }
             public string currency { get; set; }
             public int amount { get; set; }
@@ -45,7 +46,7 @@ namespace DeliveryRoomWatcher.Payloads
 
         public class PaymongoFilterPayload
         {
-            public string consult_req_pk { get; set; }
+            public string transaction_pk { get; set; }
             public string id { get; set; }
             public string event_type { get; set; }
             public string pay_src_id { get; set; }

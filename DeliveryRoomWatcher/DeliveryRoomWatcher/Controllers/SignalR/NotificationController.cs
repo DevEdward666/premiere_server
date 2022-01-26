@@ -25,6 +25,15 @@ namespace DeliveryRoomWatcher.Controllers.SignalR
         {
             await _notifyhub.Clients.All.SendAsync("notifytoreact", notificationPost);
             return Ok();
+
+
+        }
+        [HttpPost]
+        [Route("api/notificationSpecified")]
+        public async Task<IActionResult> Sendto(mdlMessagePost.NotificationPostSpecified notificationPost)
+        {
+            await _notifyhub.Clients.Client(notificationPost.connectionId).SendAsync("notifyspecified", notificationPost);
+            return Ok();
         }
     }
 }

@@ -14,11 +14,11 @@ namespace DeliveryRoomWatcher.Parameters
         }
         public class GetServiceID
         {
-            public short service_id { get; set; }
+            public string service_id { get; set; }
         }
         public class GetServiceDescID
         {
-            public short service_desc_id { get; set; }
+            public string service_desc_id { get; set; }
         }
     }
 }

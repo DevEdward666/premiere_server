@@ -19,4 +19,5 @@ namespace DeliveryRoomWatcher.Models
         public DateTime? encoded_at { get; set; }
         public string encoder_pk { get; set; }
     }
+
 }

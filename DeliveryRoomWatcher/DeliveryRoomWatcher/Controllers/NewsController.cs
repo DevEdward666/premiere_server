@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DeliveryRoomWatcher.Models;
+using DeliveryRoomWatcher.Models.Common;
 using DeliveryRoomWatcher.Parameters;
 using DeliveryRoomWatcher.Repositories;
 using Microsoft.AspNetCore.Authorization;
@@ -74,6 +75,17 @@ namespace DeliveryRoomWatcher.Controllers
         public ActionResult InsertCommentNews(mdlNewsComment.addcomment addcomment)
         {
             return Ok(_news.InsertCommentNews(addcomment));
+        }       [HttpPost]
+        [Route("api/news/updateNews")]
+        public ActionResult updateNews([FromForm] setNewImage image)
+        {
+            return Ok(_news.UpdateNews(image));
         }
+        [Route("api/news/UpdateNewsWithoutImage")]
+        public ActionResult UpdateNewsWithoutImage([FromForm] setNewImage image)
+        {
+            return Ok(_news.UpdateNewsWithoutImage(image));
+        }
+
     }
 }

@@ -28,12 +28,12 @@ namespace DeliveryRoomWatcher.Repositories
                 try
                 {
                     ClinicModel selected_consult_req = con.QuerySingle<ClinicModel>(
-                        $@"SELECT * FROM `consult_request` where consult_req_pk = @consult_req_pk;"
-                        , new { payload.consult_req_pk }, transaction: tran);
+                        $@"SELECT * FROM `consult_request` where consult_req_pk = @transaction_pk;"
+                        , new { payload.transaction_pk }, transaction: tran);
 
                     if (selected_consult_req != null)
                     {
-                        if (selected_consult_req.pay_at != null || selected_consult_req.paymongo_paid_at != null || !selected_consult_req.sts_pk.Equals("fa"))
+                        if (selected_consult_req.pay_at != null || selected_consult_req.paymongo_paid_at != null || selected_consult_req.sts_pk.Equals("pd"))
                         {
                             return new ResponseModel
                             {
@@ -62,9 +62,9 @@ namespace DeliveryRoomWatcher.Repositories
                         if (paymongo_response.errors == null && paymongo_response.data.id != null)
                         {
                             int paymongo_source_id_saved = con.Execute($@"
-                                     UPDATE `consult_request` SET paymongo_src_id=@paymongo_src_id,paymongo_src_id_enc_at=NOW() WHERE consult_req_pk = @consult_req_pk; 
+                                     UPDATE `consult_request` SET paymongo_src_id=@paymongo_src_id,paymongo_src_id_enc_at=NOW() WHERE consult_req_pk = @transaction_pk; 
                                     ",
-                            new { paymongo_src_id = paymongo_response.data.id, payload.consult_req_pk }, transaction: tran);
+                            new { paymongo_src_id = paymongo_response.data.id, payload.transaction_pk }, transaction: tran);
 
                             if (paymongo_response.data.attributes.redirect.checkout_url != null)
                             {
@@ -72,7 +72,7 @@ namespace DeliveryRoomWatcher.Repositories
                                 {
                                     BillPaymongoEntity bill_paymong_payload = new BillPaymongoEntity
                                     {
-                                        consult_req_pk = payload.consult_req_pk,
+                                        transaction_pk = payload.transaction_pk,
                                         id = paymongo_response.data.id,
                                         event_type = "source.create",
                                         source_type = paymongo_response.data.type,
@@ -98,7 +98,7 @@ namespace DeliveryRoomWatcher.Repositories
 
                                     int saved_bill_paymongo = con.Execute($@"
                                      INSERT INTO `bill_paymongo` SET 
-                                     consult_req_pk=@consult_req_pk,
+                                     transaction_pk=@transaction_pk,
                                      id=@id,
                                      event_type=@event_type,
                                      source_type=@source_type,
@@ -207,7 +207,7 @@ namespace DeliveryRoomWatcher.Repositories
                 string event_type = payload.data.attributes.type;
                 var amount = payload.data.attributes.data.attributes.amount;
                 string currency = "PHP";
-                string source_resource_id = payload.data.attributes.data.id;
+                string source_resource_id = payload.data.id;
                 var type = payload.data.attributes.data.type;
 
                 ConsultRequestEntity selected_consult_req = con.QuerySingle<ConsultRequestEntity>(
@@ -252,7 +252,7 @@ namespace DeliveryRoomWatcher.Repositories
                     {
                         BillPaymongoEntity bill_paymong_payload = new BillPaymongoEntity
                         {
-                            consult_req_pk = selected_consult_req?.consult_req_pk,
+                            transaction_pk = selected_consult_req?.consult_req_pk,
                             id = payment_resource_response?.data?.id,
                             event_type = event_type,
                             source_type = payment_resource_response?.data?.type,
@@ -286,7 +286,7 @@ namespace DeliveryRoomWatcher.Repositories
 
                         int saved_bill_paymongo = con.Execute($@"
                                      INSERT INTO `bill_paymongo` SET 
-                                     consult_req_pk=@consult_req_pk,
+                                     transaction_pk=@transaction_pk,
                                      id=@id,
                                      event_type=@event_type,
                                      source_type=@source_type,
@@ -354,7 +354,7 @@ namespace DeliveryRoomWatcher.Repositories
             using var tran = con.BeginTransaction();
             try
             {
-                var amount = payload.data.attributes.data.attributes.amount;
+                var amount = payload.data.attributes.amount;
                 string payment_intent_id = payload.data?.attributes?.data?.attributes?.payment_intent_id;
                 string source_resource_id = payload.data?.attributes?.data?.attributes?.source?.id;
                 var type = payload.data.attributes.data.type;
@@ -395,7 +395,7 @@ namespace DeliveryRoomWatcher.Repositories
                     {
                         BillPaymongoEntity bill_paymong_payload = new BillPaymongoEntity
                         {
-                            consult_req_pk = selected_consult_req?.consult_req_pk,
+                            transaction_pk = selected_consult_req?.consult_req_pk,
                             event_type = event_type,
                             id = payload?.data?.id,
                             source_type = payload?.data?.type,
@@ -432,7 +432,7 @@ namespace DeliveryRoomWatcher.Repositories
 
                         int saved_bill_paymongo = con.Execute($@"
                                      INSERT INTO `bill_paymongo` SET 
-                                     consult_req_pk=@consult_req_pk,
+                                     transaction_pk=@transaction_pk,
                                      id=@id,
                                      event_type=@event_type,
                                      source_type=@source_type,
@@ -515,12 +515,12 @@ namespace DeliveryRoomWatcher.Repositories
                 try
                 {
                     ConsultRequestEntity selected_consult_req = con.QuerySingle<ConsultRequestEntity>(
-                        $@"SELECT * FROM `consult_request` where consult_req_pk = @consult_req_pk;"
-                        , new { payload.consult_req_pk }, transaction: tran);
+                        $@"SELECT * FROM `consult_request` where consult_req_pk = @transaction_pk;"
+                        , new { payload.transaction_pk }, transaction: tran);
 
                     if (selected_consult_req != null)
                     {
-                        if (selected_consult_req.pay_at != null || selected_consult_req.paymongo_paid_at != null || !selected_consult_req.sts_pk.Equals("fa"))
+                        if (selected_consult_req.pay_at != null || selected_consult_req.paymongo_paid_at != null || selected_consult_req.sts_pk.Equals("pd"))
                         {
                             return new ResponseModel
                             {
@@ -554,9 +554,9 @@ namespace DeliveryRoomWatcher.Repositories
                         if (paymongo_response.errors == null && paymongo_response.data.id != null)
                         {
                             int paymongo_source_id_saved = con.Execute($@"
-                                     UPDATE `consult_request` SET paymongo_src_id=@paymongo_src_id,paymongo_src_id_enc_at=NOW() WHERE consult_req_pk = @consult_req_pk; 
+                                     UPDATE `consult_request` SET paymongo_src_id=@paymongo_src_id,paymongo_src_id_enc_at=NOW() WHERE consult_req_pk = @transaction_pk; 
                                     ",
-                            new { paymongo_src_id = paymongo_response.data.id, payload.consult_req_pk }, transaction: tran);
+                            new { paymongo_src_id = paymongo_response.data.id, payload.transaction_pk }, transaction: tran);
 
                             if (paymongo_response.data.attributes.client_key != null)
                             {
@@ -564,7 +564,7 @@ namespace DeliveryRoomWatcher.Repositories
                                 {
                                     BillPaymongoEntity bill_paymong_payload = new BillPaymongoEntity
                                     {
-                                        consult_req_pk = payload?.consult_req_pk,
+                                        transaction_pk = payload?.transaction_pk,
                                         id = paymongo_response?.data?.id,
                                         event_type = "source.create",
                                         source_type = paymongo_response?.data?.type,
@@ -593,7 +593,7 @@ namespace DeliveryRoomWatcher.Repositories
 
                                     int saved_bill_paymongo = con.Execute($@"
                                          INSERT INTO `bill_paymongo` SET 
-                                         consult_req_pk=@consult_req_pk,
+                                         transaction_pk=@transaction_pk,
                                          id=@id,
                                          client_key=@client_key,
                                          event_type=@event_type,
@@ -685,6 +685,183 @@ namespace DeliveryRoomWatcher.Repositories
             }
         }
 
+        public async Task<ResponseModel> PaidPaymentIntentAsync(PaymongoEwalletPayload payload)
+        {
+            try
+            {
+                using var con = new MySqlConnection(DatabaseConfig.GetConnection());
+                con.Open();
+                using var tran = con.BeginTransaction();
+                try
+                {
+                    ConsultRequestEntity selected_transaction_pk = con.QuerySingle<ConsultRequestEntity>(
+                         $@"SELECT * FROM `consult_request` where consult_req_pk = @transaction_pk;"
+                        , new { payload.transaction_pk }, transaction: tran);
+
+                    if (selected_transaction_pk != null)
+                    {
+                        if (selected_transaction_pk.pay_at != null || selected_transaction_pk.paymongo_paid_at != null || selected_transaction_pk.sts_pk.Equals("pd"))
+                        {
+                            return new ResponseModel
+                            {
+                                success = false,
+                                message = "This consultation request has already been marked as paid! Please contact us for inquiries."
+                            };
+                        }
+
+
+                        var url = DefaultConfig.paymongo_pay_intent_url;
+
+                        var secret_key = DefaultConfig.paymongo_secret_key;
+
+                        PaymongoSourceResourceResponse paymongo_response = await UsePaymongoApi.RetrieveSource(url, secret_key, payload?.id);
+
+                        if (paymongo_response.errors != null)
+                        {
+
+                            return new ResponseModel
+                            {
+                                success = false,
+                                paymongo_errors = paymongo_response.errors
+                            };
+                        }
+
+                        if (paymongo_response.errors == null && paymongo_response.data.id != null)
+                        {
+                            int paymongo_source_id_saved = con.Execute($@"UPDATE `consult_request` SET paymongo_paid_at=NOW(),pay_at=NOW(),  sts_pk = 'pd' WHERE consult_req_pk = @transaction_pk; ",
+                            new { payload.transaction_pk }, transaction: tran);
+
+                            if (paymongo_response.data.attributes.client_key != null)
+                            {
+                                if (paymongo_source_id_saved > 0)
+                                {
+                                    BillPaymongoEntity bill_paymong_payload = new BillPaymongoEntity
+                                    {
+                                        transaction_pk = payload?.transaction_pk,
+                                        id = paymongo_response?.data?.id,
+                                        payment_method_id = paymongo_response?.data?.attributes?.payment_method_id,
+                                        event_type = "payment.paid",
+                                        source_type = paymongo_response?.data?.type,
+                                        amount = paymongo_response?.data?.attributes?.amount,
+                                        city = paymongo_response?.data?.attributes?.billing?.address?.city,
+                                        country = paymongo_response?.data?.attributes?.billing?.address?.country,
+                                        line1 = paymongo_response?.data?.attributes?.billing?.address?.line1,
+                                        line2 = paymongo_response?.data?.attributes?.billing?.address?.line2,
+                                        postal_code = paymongo_response?.data?.attributes?.billing?.address?.postal_code,
+                                        state = paymongo_response?.data?.attributes?.billing?.address?.state,
+                                        email = paymongo_response?.data?.attributes?.billing?.email,
+                                        phone = paymongo_response?.data?.attributes?.billing?.phone,
+                                        currency = paymongo_response?.data?.attributes?.currency,
+                                        livemode = paymongo_response?.data?.attributes?.livemode,
+                                        checkout_url = paymongo_response?.data?.attributes?.next_action?.redirect?.url,
+                                        failed_url = paymongo_response?.data?.attributes?.redirect?.failed,
+                                        success_url = paymongo_response?.data?.attributes?.redirect?.success,
+                                        status = paymongo_response?.data?.attributes?.status,
+                                        type = paymongo_response?.data?.attributes?.type,
+                                        created_at = paymongo_response?.data?.attributes?.created_at,
+                                        updated_at = paymongo_response?.data?.attributes?.updated_at,
+                                        client_key = paymongo_response?.data?.attributes?.client_key,
+                                    };
+
+
+
+                                    int saved_bill_paymongo = con.Execute($@"
+                                         INSERT INTO `bill_paymongo` SET 
+                                          transaction_pk=@transaction_pk,
+                                         id=@id,
+                                         client_key=@client_key,
+                                         event_type=@event_type,
+                                         source_type=@source_type,
+                                         amount=@amount,
+                                         currency=@currency,
+                                         livemode=@livemode,
+                                         checkout_url=@checkout_url,
+                                         failed_url=@failed_url,
+                                         success_url=@success_url,
+                                         status=@status,
+                                         type=@type,
+                                         created_at=@created_at,
+                                         updated_at=@updated_at;
+                                        ",
+                                      bill_paymong_payload, transaction: tran);
+
+                                    if (saved_bill_paymongo > 0)
+                                    {
+                                        tran.Commit();
+
+                                        paymongo_response.data.public_key = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{secret_key}:"));
+                                        return new ResponseModel
+                                        {
+                                            success = true,
+                                            message = "The consulation has been updated to paid",
+                                            data = paymongo_response
+                                        };
+                                    }
+                                    else
+                                    {
+                                        return new ResponseModel
+                                        {
+                                            success = false,
+                                            message = "The server is not able to save the billing information! Please try again later."
+                                        };
+                                    }
+                                }
+                                else
+                                {
+                                    return new ResponseModel
+                                    {
+                                        success = false,
+                                        message = "The server was unable to save the payment source! Please try again later."
+                                    };
+                                }
+                            }
+                            else
+                            {
+
+                                return new ResponseModel
+                                {
+                                    success = false,
+                                    message = "The server was unable to save the payment source! client_key is null Please try again later.",
+
+                                };
+                            }
+                        }
+
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = "A problem has occured when processing the payment. Please try again later."
+                        };
+                    }
+                    else
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = "The consultation request that you are trying to pay no longer exist.",
+                        };
+                    }
+                }
+                catch (Exception e)
+                {
+                    return new ResponseModel
+                    {
+                        success = false,
+                        message = $"The server has encountered a problem. {e.Message}",
+                    };
+                }
+
+            }
+            catch (Exception e)
+            {
+                return new ResponseModel
+                {
+                    success = false,
+                    message = e.Message.ToString()
+                };
+            }
+        }
+
 
         //RECORDS
 
@@ -698,7 +875,7 @@ namespace DeliveryRoomWatcher.Repositories
                 List<BillPaymongoEntity> table_data = con.Query<BillPaymongoEntity>($@"
                                        SELECT * FROM `bill_paymongo`
                                        WHERE
-                                       COALESCE(consult_req_pk,'') LIKE CONCAT('%',@consult_req_pk,'%')
+                                       COALESCE(transaction_pk,'') LIKE CONCAT('%',@transaction_pk,'%')
                                        AND COALESCE(id,'') LIKE CONCAT('%',@id,'%')
                                        AND COALESCE(event_type,'') LIKE CONCAT('%',@event_type,'%')
                                        AND COALESCE(id,'') LIKE CONCAT('%',@id,'%')

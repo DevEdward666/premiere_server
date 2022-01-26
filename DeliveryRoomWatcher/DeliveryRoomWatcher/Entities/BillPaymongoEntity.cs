@@ -29,7 +29,7 @@ namespace DeliveryRoomWatcher.Entities
         public int? updated_at { get; set; }
         public int? paid_at { get; set; }
         public int? available_at { get; set; }
-        public string consult_req_pk { get; set; }
+        public string transaction_pk { get; set; }
         public int? fee { get; set; }
         public string pay_descrip { get; set; }
         public int? pay_net_amount { get; set; }
@@ -40,6 +40,7 @@ namespace DeliveryRoomWatcher.Entities
 
         //card
         public string payment_intent_id { get; set; }
+        public string payment_method_id { get; set; }
         public string origin { get; set; }
         public string tax_amount { get; set; }
         public List<dynamic> refunds { get; set; }

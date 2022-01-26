@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DeliveryRoomWatcher.Models;
+using DeliveryRoomWatcher.Models.FCM;
 using DeliveryRoomWatcher.Models.Passbase;
+using DeliveryRoomWatcher.Models.User;
 using DeliveryRoomWatcher.Parameters;
 using DeliveryRoomWatcher.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -98,6 +100,22 @@ namespace DeliveryRoomWatcher.Controllers
         public ActionResult getnotications(mdlNotifications notifications)
         {
             return Ok(_default.getnotications(notifications));
+        }   
+        [HttpPost]
+        [Route("api/default/gettokens")]
+        public ActionResult gettokens()
+        {
+            return Ok(_default.gettokens());
+        }           [HttpPost]
+        [Route("api/default/getSpecificToken")]
+        public ActionResult getSpecificToken(UserModel.getoken token)
+        {
+            return Ok(_default.getSpecificToken(token));
+        }     
+        [Route("api/default/getSpecificTokenAdmin")]
+        public ActionResult getSpecificTokenAdmin(UserModel.getoken token)
+        {
+            return Ok(_default.getSpecificTokenAdmin(token));
         }  
         [HttpPost]
         [Route("api/default/getnoticationsAll")]
@@ -110,6 +128,12 @@ namespace DeliveryRoomWatcher.Controllers
         public ActionResult getnoticationsAdmin(mdlNotifications.searchNotif notifications)
         {
             return Ok(_default.getnoticationsAdmin(notifications));
+        }  
+        [HttpPost]
+        [Route("api/default/insertFCMToken")]
+        public ActionResult insertFCMToken(NotificationModel.inserttoken inserttoken)
+        {
+            return Ok(_default.insertFCMToken(inserttoken));
         }
     }
 }

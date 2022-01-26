@@ -32,7 +32,7 @@ namespace DeliveryRoomWatcher.Repositories
                                                news, transaction: tran);
                         if (insert_news >= 0)
                         {
-                            foreach (var f in news.image)
+                            foreach (var f in news.news_image)
                             {
 
                                 FileResponseModel file_upload_response = new FileResponseModel
@@ -45,7 +45,7 @@ namespace DeliveryRoomWatcher.Repositories
                                     news_id = getNewsID
                                 };
 
-                                file_upload_response = UseLocalFiles.UploadLocalFile(f, $@"Resources\News\{news.news_id}\", news.title); ;
+                                file_upload_response = UseLocalFiles.UploadLocalFile(f, $@"Resources\News\{news.news_id}\", news.title); 
                                 if (!file_upload_response.success)
                                 {
                                     return new ResponseModel
@@ -84,7 +84,7 @@ namespace DeliveryRoomWatcher.Repositories
                             return new ResponseModel
                             {
                                 success = true,
-                                message = "The news inserted sucessfully."
+                                message = "News inserted sucessfully."
                             };
 
                         }
@@ -126,7 +126,7 @@ namespace DeliveryRoomWatcher.Repositories
                     {
 
 
-                        int insert_new_events = con.Execute($@"insert into prem_events (evtitle,evdesc,evimage,evstartdate,evstarttime,evenddate,evendtime,evcolor) values(@evtitle,@evdesc,@evimage,@evstartdate,@evstarttime,@evenddate,@evendtime,@evcolor)",
+                        int insert_new_events = con.Execute($@"INSERT INTO prem_events  SET evtitle=@evtitle,evdesc=@evdesc,evimage=@evimage,evstartdate=@evstartdate,evstarttime=@evstarttime,evenddate=@evenddate,evendtime=@evendtime,evcolor=@evcolor,evstatus='P'",
                                                news, transaction: tran);
                         if (insert_new_events >= 0)
                         {
@@ -148,6 +148,125 @@ namespace DeliveryRoomWatcher.Repositories
                         }
 
 
+
+
+
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }
+        public ResponseModel InsertMasterFiles (Models.FileModel file)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        string FileId = $@"SELECT NextFileId()";
+                        string getFileId = con.QuerySingleOrDefault<string>(FileId, file, transaction: tran);
+                        file.fileid = getFileId;
+                        file.fileid = getFileId;
+
+                        if (getFileId != null)
+                        {
+
+
+                            int insert_new_master_file = con.Execute($@"INSERT INTO prem_emp_file_mast SET master_file_id=@file_id, title=@title,description=@description,createdDate=NOW()",
+                                               file, transaction: tran);
+                        if (insert_new_master_file >= 0)
+                        {
+                            tran.Commit();
+                            return new ResponseModel
+                            {
+                                success = true,
+                                message = "Files inserted sucessfully."
+                            };
+
+                        }
+                        else
+                        {
+                            return new ResponseModel
+                            {
+                                success = false,
+                                message = "Error! events insertion Failed."
+                            };
+                        }
+                        }
+                        else
+                        {
+
+                            tran.Rollback();
+                            return new ResponseModel
+                            {
+                                success = false,
+                                message = "No affected rows when trying to save the consultation request. "
+                            };
+                        }
+
+
+
+
+
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }
+        public ResponseModel InsertFiles (Models.FileModel file)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                       
+                            int insert_new_master_file = con.Execute($@"INSERT INTO prem_emp_files SET master_file_id=@file_id, filename=@filename,filepath=@filepath,filetype=@filetype,createdDate=NOW()",
+                                               file, transaction: tran);
+                            if (insert_new_master_file >= 0)
+                            {
+                                tran.Commit();
+                                return new ResponseModel
+                                {
+                                    success = true,
+                                    message = "Files inserted sucessfully."
+                                };
+
+                            }
+                            else
+                            {
+                                tran.Rollback();
+                                return new ResponseModel
+                                {
+                                    success = false,
+                                    message = "Error! events insertion Failed."
+                                };
+                            }
+                       
+
+                  
 
 
 
@@ -215,6 +334,40 @@ namespace DeliveryRoomWatcher.Repositories
             }
 
         }
+        public ResponseModel getFiles(Models.FileModel.Search_File search_File)
+        {
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = con.Query($@"SELECT pem.master_file_id,pem.title,pem.description,pe.filename,pe.filepath 
+                                                FROM prem_emp_file_mast pem JOIN prem_emp_files pe ON pem.master_file_id=pe.master_file_id
+                                                WHERE pem.`title`LIKE CONCAT(@title,'%') LIMIT 50",
+                           search_File, transaction: tran
+                            );
+
+                        return new ResponseModel
+                        {
+                            success = true,
+                            data = data
+                        };
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+                }
+            }
+
+        }
         public ResponseModel getEventsAdmin()
         {
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
@@ -247,6 +400,261 @@ namespace DeliveryRoomWatcher.Repositories
             }
 
         }
+        public ResponseModel UpdateTestimonials(Models.TestimonialsModel.update_testimonials update_testimonials)
+        {
+                                                                                             
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+
+
+                            int insert_testimonials = con.Execute($@"UPDATE prem_testimonials SET description=@description,author=@author WHERE id=@id",
+                                update_testimonials, transaction: tran);
+
+                            if (insert_testimonials > 0)
+                            {
+                               
+                                    tran.Commit();
+                                    return new ResponseModel
+                                    {
+                                        success = true,
+                                        message = "Testimonials updated successfully"
+                                    };
+                             
+
+                            }
+                            else
+                            {
+                                tran.Rollback();
+                                return new ResponseModel
+                                {
+                                    success = false,
+                                    message = $"No affected rows when trying to save the consultation request."
+                                };
+                            }
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+
+                }
+            }
+        }     
+        public ResponseModel InsertNewTestimonials(Models.TestimonialsModel.create_testimonials create_Testimonials)
+        {
+
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+
+
+                            int insert_testimonials = con.Execute($@"INSERT INTO prem_testimonials SET description=@description,author=@author,encoded=NOW()",
+                                create_Testimonials, transaction: tran);
+
+                            if (insert_testimonials > 0)
+                            {
+                               
+                                    tran.Commit();
+                                    return new ResponseModel
+                                    {
+                                        success = true,
+                                        message = "Testimonials added successfully"
+                                    };
+                             
+
+                            }
+                            else
+                            {
+                                tran.Rollback();
+                                return new ResponseModel
+                                {
+                                    success = false,
+                                    message = $"No affected rows when trying to save the consultation request."
+                                };
+                            }
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+
+                }
+            }
+        }
+            public ResponseModel InsertNewFile(Models.FileModel.Create_New_File create_file)
+        {
+
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+
+
+                        string file_id = $@"SELECT NextFileId()";
+                        string getfile_id = con.QuerySingleOrDefault<string>(file_id, create_file, transaction: tran);
+                        create_file.master_file_id = getfile_id;
+                        create_file.master_file_id = getfile_id;
+
+                        if (getfile_id != null)
+                        {
+                                int add_file_mast = con.Execute($@"INSERT INTO prem_emp_file_mast SET master_file_id=@master_file_id,title=@title,description=@description,createdDate=NOW()",
+                                    create_file, transaction: tran);
+
+                            if (add_file_mast > 0)
+                            {
+                                int add_file = con.Execute($@"INSERT INTO prem_emp_files SET master_file_id=@master_file_id,filename=@title,filepath=@filepath,filetype=@filetype,createdAt=NOW()",
+                                    create_file, transaction: tran);
+                                if (add_file > 0) 
+                                {
+                                    tran.Commit();
+                                    return new ResponseModel
+                                    {
+                                        success = true,
+                                        message = "Video added successfully"
+                                    };
+                                }
+                                else
+                                {
+                                    tran.Rollback();
+                                    return new ResponseModel
+                                    {
+                                        success = false,
+                                        message = $"No affected rows when trying to save the consultation request."
+                                    };
+                                }
+
+                            }
+                            else
+                            {
+                                tran.Rollback();
+                                return new ResponseModel
+                                {
+                                    success = false,
+                                    message = $"No affected rows when trying to save the consultation request."
+                                };
+                            }
+
+
+                           
+                        }
+                        else
+                        {
+                            return new ResponseModel
+                            {
+                                success = false,
+                                message = "No affected rows when trying to save the consultation request. "
+                            };
+                        }
+
+
+
+
+
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+
+                }
+            }
+        }public ResponseModel UpdateFile(Models.FileModel.Create_New_File create_file)
+        {
+
+            using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
+            {
+                con.Open();
+                using (var tran = con.BeginTransaction())
+                {
+                    try
+                    {
+
+
+                           int add_file_mast = con.Execute($@"update prem_emp_file_mast SET title=@title,description=@description where master_file_id=@master_file_id",
+                                    create_file, transaction: tran);
+
+                            if (add_file_mast > 0)
+                            {
+                                int add_file = con.Execute($@"update prem_emp_files SET filename=@title,filepath=@filepath  where master_file_id=@master_file_id",
+                                    create_file, transaction: tran);
+                                if (add_file > 0) 
+                                {
+                                    tran.Commit();
+                                    return new ResponseModel
+                                    {
+                                        success = true,
+                                        message = "Video added successfully"
+                                    };
+                                }
+                                else
+                                {
+                                    tran.Rollback();
+                                    return new ResponseModel
+                                    {
+                                        success = false,
+                                        message = $"No affected rows when trying to save the consultation request."
+                                    };
+                                }
+
+                            }
+                            else
+                            {
+                                tran.Rollback();
+                                return new ResponseModel
+                                {
+                                    success = false,
+                                    message = $"No affected rows when trying to save the consultation request."
+                                };
+                            }
+
+
+                           
+                        
+
+
+
+
+                    }
+                    catch (Exception e)
+                    {
+                        return new ResponseModel
+                        {
+                            success = false,
+                            message = $@"External server error. {e.Message.ToString()}",
+                        };
+                    }
+
+
+                }
+            }
+        }
         public ResponseModel getEvents()
             {
                 using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
@@ -256,7 +664,7 @@ namespace DeliveryRoomWatcher.Repositories
                     {
                         try
                         {
-                            var data = con.Query($@"SELECT evid,evtitle,evdesc,evimage,DATE_FORMAT(evstartdate,'%Y-%m-%d') AS datestart,evstarttime, DATE_FORMAT(evenddate,'%Y-%m-%d') AS dateend,evendtime,evcolor,eventts,evstatus FROM prem_events  WHERE  MONTH(evstartdate) =  MONTH(CURDATE()) ORDER BY datestart",
+                            var data = con.Query($@"SELECT evid,evtitle,evdesc,evimage,DATE_FORMAT(evstartdate,'%Y-%m-%d') AS datestart,evstarttime, DATE_FORMAT(evenddate,'%Y-%m-%d') AS dateend,evendtime,evcolor,eventts,evstatus FROM prem_events  ORDER BY datestart DESC",
                                null, transaction: tran
                                 );
 
@@ -437,6 +845,8 @@ namespace DeliveryRoomWatcher.Repositories
             }
 
         }
+
+        
 
     }
 }

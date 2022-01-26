@@ -30,14 +30,15 @@ namespace DeliveryRoomWatcher.Repositories
                 {
                     try
                     {
-                        var data = con.Query($@"SELECT cr.consult_req_pk AS appointment_id,cr.prem_id,cr.first_name,cr.middle_name,cr.last_name,
+                        var data = con.Query($@"SELECT  sm.`sts_desc`,cr.consult_req_pk AS appointment_id,cr.prem_id,cr.first_name,cr.middle_name,cr.last_name,
                                                 cr.gender, dc.csdesc, nat.nationality, cr.rel_pk, cr.birth_date, cr.email,
                                                 cr.mob_no, CONCAT(line1,',',line2) AS line1, db.barangaydesc, dp.provincedesc, city.citymundesc, dg.regiondesc, CONCAT(
-                                                 db.barangaydesc, ',', city.citymundesc, ',', dp.provincedesc) AS line2, cr.zip_code
+                                                 db.barangaydesc, ',', city.citymundesc, ',', dp.provincedesc) AS line2, cr.zip_code,cr.`request_at`,cr.`paymongo_src_id`,  CASE WHEN paymongo_paid_at IS NOT NULL THEN 'PAID' ELSE 'NOT PAID' END payment_status
                                                  FROM consult_request cr 
                                                 LEFT JOIN ddt_province dp ON dp.provincecode = cr.prov_pk LEFT JOIN ddt_barangay db ON db.barangaycode = cr.brgy_pk LEFT JOIN citymunicipality city ON city.citymuncode = cr.citymun_pk 
                                                LEFT JOIN ddt_region dg  ON dg.regioncode = cr.region_pk LEFT JOIN ddt_civilstatus dc ON dc.cskey=cr.cs_pk LEFT JOIN nationality nat ON nat.nat_pk=cr.nat_pk
-                                                    WHERE cr.prem_id =@prem_id AND cr.consult_req_pk=@consult_req_pk",
+                                                  JOIN status_master sm ON sm.`sts_pk`=cr.sts_pk   
+                                                WHERE cr.prem_id =@prem_id AND cr.consult_req_pk=@consult_req_pk",
                          info, transaction: tran
                             );
 
@@ -600,7 +601,7 @@ namespace DeliveryRoomWatcher.Repositories
                                         req_pk = getAppointmentID
                                     };
 
-                                    file_upload_response = UseFtp.UploadFtp(f, DefaultConfig.ftp_ip + ":" + DefaultConfig.ftp_port + "/" + DefaultConfig.app_name + $@"/Uploads/DiagnosticFiles/{getAppointmentID}/", DefaultConfig.ftp_user, DefaultConfig.ftp_pass);
+                                    file_upload_response = UseFtp.UploadFtp(f, DefaultConfig.ftp_ip + ":" + DefaultConfig.ftp_port + "/" + DefaultConfig.app_name + $@"/Uploads/DiagnosticFiles/", DefaultConfig.ftp_user, DefaultConfig.ftp_pass);
                                     if (!file_upload_response.success)
                                     {
                                         return new ResponseModel
@@ -820,7 +821,7 @@ namespace DeliveryRoomWatcher.Repositories
         }
         DefaultsRepo def_val_repo = new DefaultsRepo();
         PaymentLinkEmail pay_link_email = new PaymentLinkEmail();
-        public ResponseModel addClinicAppointment(Models.Clinic.ClinicModel prem)
+        public ResponseModel addClinicAppointment(ClinicModel prem)
         {
             ResponseModel response = new ResponseModel();
             using (var con = new MySqlConnection(DatabaseConfig.GetConnection()))
@@ -899,7 +900,7 @@ namespace DeliveryRoomWatcher.Repositories
                         var setdetails = con.Query(getdetails, prem, transaction: tran);
                             if (insert_appointment >= 0)
                             {
-                                foreach (var f in prem.attach_req_files)
+                                foreach (var f in prem.consultation_files)
                                 {
 
                                     FileResponseModel file_upload_response = new FileResponseModel
@@ -990,7 +991,8 @@ namespace DeliveryRoomWatcher.Repositories
 
                                 tran.Commit();
                                 return new ResponseModel
-                                {
+                                {               
+                                    data=setdetails,
                                     success = true,
                                     message = "Your consultation request has been created. We will keep in touch for further details."
                                 };
@@ -1100,7 +1102,7 @@ namespace DeliveryRoomWatcher.Repositories
                                                Appointment, transaction: tran);
                             if (insert_appointment >= 0)
                             {
-                                foreach (var f in Appointment.attach_req_files)
+                                foreach (var f in Appointment.consultation_files)
                                 {
 
                                     FileResponseModel file_upload_response = new FileResponseModel
@@ -1399,7 +1401,10 @@ namespace DeliveryRoomWatcher.Repositories
                                                prem, transaction: tran);
                         if (update_user_info >= 0)
                         {
-                           
+                            int update_user_master = con.Execute($@"UPDATE prem_usermaster SET passbase_status=@passbase_status,active='true',ApproveAt=NOW() WHERE username=@username",
+                                     prem, transaction: tran);
+                            if (update_user_master >= 0)
+                            {
                                 //FileResponseModel file_upload_response = new FileResponseModel
                                 //{
                                 //    success = true
@@ -1477,8 +1482,16 @@ namespace DeliveryRoomWatcher.Repositories
                                     success = true,
                                     message = "The user info updated sucessfully."
                                 };
-                            
-                        
+                            }
+                            else
+                            {
+                                return new ResponseModel
+                                {
+                                    success = false,
+                                    message = "Error! Update user Failed."
+                                };
+                            }
+
                         }
                         else
                         {
