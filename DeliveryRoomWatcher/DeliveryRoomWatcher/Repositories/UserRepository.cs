@@ -386,7 +386,7 @@ namespace DeliveryRoomWatcher.Repositories
                                 return new ResponseModel
                                 {
                                     success = false,
-                                    message = "Wrong Usename/Password. Please Try again"
+                                    message = "Username is not registered"
                                 };
                             //}
                             //else
