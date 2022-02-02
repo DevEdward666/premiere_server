@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DeliveryRoomWatcher.Models;
+using DeliveryRoomWatcher.Models.Common;
 using DeliveryRoomWatcher.Parameters;
 using DeliveryRoomWatcher.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeliveryRoomWatcher.Controllers
 {
+    //[Authorize]
     [ApiController]
     public class NewsController : ControllerBase
     {
@@ -19,6 +22,12 @@ namespace DeliveryRoomWatcher.Controllers
         public ActionResult getallnews(PNews.PGetNews news)
         {
             return Ok(_news.getallnews(news));
+        } 
+        [HttpPost]
+        [Route("api/news/getallnewsimages")]
+        public ActionResult getallnewsimages(PNews.PGetNews news)
+        {
+            return Ok(_news.getallnewsimages(news));
         }
         [HttpPost]
         [Route("api/news/getallnewsinfo")]
@@ -38,6 +47,12 @@ namespace DeliveryRoomWatcher.Controllers
             return Ok(_news.getallnewsreaction(reaction));
         }
         [HttpPost]
+        [Route("api/news/getNewsBymonth")]
+        public ActionResult getNewsBymonth(PNews.PGetNews newsmonth)
+        {
+            return Ok(_news.getNewsBymonth(newsmonth));
+        } 
+        [HttpPost]
         [Route("api/news/getallnewsbyweek")]
         public ActionResult getallnewsbyweek(PNews.PGetNewsWeek newsweek)
         {
@@ -45,9 +60,9 @@ namespace DeliveryRoomWatcher.Controllers
         }
         [HttpPost]
         [Route("api/news/getallnewstoday")]
-        public ActionResult getalgetallnewstodaylnews(PNews.PGetNewsToday newsToday)
+        public ActionResult getalgetallnewstodaylnews(PNews.PGetNewsToday newstoday)
         {
-            return Ok(_news.getallnewstoday(newsToday));
+            return Ok(_news.getallnewstoday(newstoday));
         }  
         [HttpPost]
         [Route("api/news/InsertReactionNews")]
@@ -60,6 +75,17 @@ namespace DeliveryRoomWatcher.Controllers
         public ActionResult InsertCommentNews(mdlNewsComment.addcomment addcomment)
         {
             return Ok(_news.InsertCommentNews(addcomment));
+        }       [HttpPost]
+        [Route("api/news/updateNews")]
+        public ActionResult updateNews([FromForm] setNewImage image)
+        {
+            return Ok(_news.UpdateNews(image));
         }
+        [Route("api/news/UpdateNewsWithoutImage")]
+        public ActionResult UpdateNewsWithoutImage([FromForm] setNewImage image)
+        {
+            return Ok(_news.UpdateNewsWithoutImage(image));
+        }
+
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DeliveryRoomWatcher.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -34,6 +37,32 @@ namespace DeliveryRoomWatcher.Parameters
             public string premid { get; set; }
         }
 
+        public class UpdateUserInfo
+        {
+            public string passbase_id { get; set; }
+            public string passbase_status { get; set; }
+            public string docs { get; set; }
+            public string img { get; set; }
+            public string username { get; set; }
+            public string active { get; set; }
+            public string civil_status { get; set; }
+            public string region_code { get; set; }
+            public string religion_code { get; set; }
+            public string city_code { get; set; }
+            public string province_code { get; set; }
+
+            public string barangay_code { get; set; }
+
+            public string nationality_code { get; set; }
+
+            public string fulladdress { get; set; }
+
+            public string zipcode { get; set; }
+
+            public IFormFile profilefile { get; set; }
+            public IFormFile Docsfile { get; set; }
+        }
+
         public class PUpdateLinkMedicalRecords
         {
           
@@ -45,7 +74,10 @@ namespace DeliveryRoomWatcher.Parameters
         {
             public string premid { get; set; }
             public string reason { get; set; }
-
+            public string req_total_cost { get; set; }
+            public DiagnosticRequestFileEntity req_file { get; set; }
+            public StatusMasterEntity status { get; set; }
+            public List<IFormFile> attach_req_files { set; get; }
             public List<PAddDiagnosticAppointmentProcedure> listofprocedures { get; set; }
 
         }
@@ -58,7 +90,8 @@ namespace DeliveryRoomWatcher.Parameters
             public string lastname { get; set; }
             public string suffix { get; set; }
             public string gender { get; set; }
-            public string civil_status { get; set; }
+            public string civil_status_key { get; set; }
+            public string civil_status_desc { get; set; }
             public string nationality_code { get; set; }
             public string religion_code { get; set; }
             public string birthdate { get; set; }
@@ -73,16 +106,22 @@ namespace DeliveryRoomWatcher.Parameters
             public string city_code { get; set; }
             public string region_code { get; set; }
 
+            public string psgc_address { get; set; }
+            public string req_total { get; set; }
+
             public string zipcode { get; set; }
             public string reason { get; set; }
+            public DiagnosticRequestFileEntity req_file { get; set; }
+            public StatusMasterEntity status { get; set; }
+            public List<IFormFile> attach_req_files { set; get; }
             public List<PAddDiagnosticAppointmentProcedure> listofprocedures { get; set; }
 
         }
         public class PAddDiagnosticAppointmentProcedure
         {
-            public string premid { get; set; }
-            public string reason { get; set; }
+
             public string proccode { get; set; }
+            public string procdesc { get; set; }
             public string proccost { get; set; }
         } 
  

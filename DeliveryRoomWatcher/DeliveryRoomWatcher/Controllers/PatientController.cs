@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using DeliveryRoomWatcher.Models;
+using DeliveryRoomWatcher.Models.Clinic;
 using DeliveryRoomWatcher.Parameters;
 using DeliveryRoomWatcher.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -58,21 +59,37 @@ namespace DeliveryRoomWatcher.Controllers
         {
 
             return Ok(_patients.UpdateMedicalRecordsLink(prem));
-        }     
+        }
+        [HttpPost]
+        [Route("api/users/addClinicAppointment")]
+        public IActionResult addClinicAppointment([FromForm] ClinicModel prem)
+        {
+
+            return Ok(_patients.addClinicAppointment(prem));
+        }
+        [HttpPost]
+        [Route("api/users/addClinicAppointmentOthers")]
+        public ActionResult addClinicAppointmentOthers([FromForm]  ClinicModel prem)
+        {
+
+            return Ok(_patients.addClinicAppointmentOthers(prem));
+        }   
         [HttpPost]
         [Route("api/users/addDiagnosticAppointment")]
-        public ActionResult addDiagnosticAppointment(PUsers.PAddDiagnosticAppointment prem)
+        public IActionResult addDiagnosticAppointment([FromForm]  PUsers.PAddDiagnosticAppointment prem)
         {
 
             return Ok(_patients.addDiagnosticAppointment(prem));
         }   
         [HttpPost]
         [Route("api/users/addDiagnosticAppointmentothers")]
-        public ActionResult addDiagnosticAppointmentothers(PUsers.PAddDiagnosticAppointmentOthers app)
+        public ActionResult addDiagnosticAppointmentothers([FromForm]  PUsers.PAddDiagnosticAppointmentOthers app)
         {
 
             return Ok(_patients.addDiagnosticAppointmentothers(app));
         }     
+           
+
            
         [HttpPost]
         [Route("api/users/addDiagnosticProcedure")]
@@ -109,6 +126,48 @@ namespace DeliveryRoomWatcher.Controllers
         {
 
             return Ok(_patients.DeactivateUser(prem));
+        }
+        [HttpPost]
+        [Route("api/users/updatepassbase")]
+        public ActionResult updatepassbase([FromForm] PUsers.UpdateUserInfo app)
+        {
+
+            return Ok(_patients.updatepassbase(app));
+        }   
+        [HttpPost]
+        [Route("api/users/updateinfo")]
+        public ActionResult updateinfo([FromForm] PUsers.UpdateUserInfo app)
+        {
+
+            return Ok(_patients.updateinfo(app));
+        }  
+        [HttpPost]
+        [Route("api/users/Link_Consultation")]
+        public ActionResult Link_Consultation(Link_consultation link)
+        {
+
+            return Ok(_patients.Link_Consultation(link));
+        }   
+        [HttpPost]
+        [Route("api/users/LinkOTPCosult")]
+        public ActionResult LinkOTPCosult(Link_consultation_OTP link)
+        {
+
+            return Ok(_patients.LinkOTPCosult(link));
+        }  
+        [HttpPost]
+        [Route("api/users/InsertLinkOTP")]
+        public ActionResult InsertLinkOTP(Link_consultation_OTP link)
+        {
+
+            return Ok(_patients.InsertLinkOTP(link));
+        } 
+        [HttpPost]
+        [Route("api/users/getConsultInfo")]
+        public ActionResult getConsultInfo(consult_info info)
+        {
+
+            return Ok(_patients.getConsultInfo(info));
         }
     }
 }

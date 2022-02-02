@@ -1,168 +1,179 @@
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.exe
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.deps.json
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.runtimeconfig.json
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.runtimeconfig.dev.json
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.pdb
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Dapper.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.AssemblyInfoInputs.cache
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.AssemblyInfo.cs
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.RazorTargetAssemblyInfo.cache
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.CopyComplete
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\staticwebassets\DeliveryRoomWatcher.StaticWebAssets.Manifest.cache
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\staticwebassets\DeliveryRoomWatcher.StaticWebAssets.xml
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.pdb
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.genruntimeconfig.cache
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csprojAssemblyReference.cache
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\MySql.Data.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.CoreCompileInputs.cache
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\mrmon\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.exe
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.deps.json
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.runtimeconfig.json
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.runtimeconfig.dev.json
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.pdb
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Dapper.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\MySql.Data.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csprojAssemblyReference.cache
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.AssemblyInfoInputs.cache
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.AssemblyInfo.cs
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.CoreCompileInputs.cache
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.RazorTargetAssemblyInfo.cache
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.CopyComplete
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\staticwebassets\DeliveryRoomWatcher.StaticWebAssets.Manifest.cache
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\staticwebassets\DeliveryRoomWatcher.StaticWebAssets.xml
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.dll
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.pdb
-C:\Users\mrmon\Work\Projects\Delivery Room Manager\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.genruntimeconfig.cache
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.exe
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.deps.json
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.runtimeconfig.json
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.runtimeconfig.dev.json
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.pdb
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Dapper.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\MySql.Data.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.AssemblyInfoInputs.cache
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.AssemblyInfo.cs
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.RazorTargetAssemblyInfo.cache
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.CopyComplete
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\staticwebassets\DeliveryRoomWatcher.StaticWebAssets.Manifest.cache
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\staticwebassets\DeliveryRoomWatcher.StaticWebAssets.xml
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.pdb
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.genruntimeconfig.cache
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\MailKit.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\MimeKit.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csprojAssemblyReference.cache
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Connections.Abstractions.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Connections.Client.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Connections.Common.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SignalR.Client.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SignalR.Client.Core.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SignalR.Common.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.CoreCompileInputs.cache
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\TUO-Edward\source\repos\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cache
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Select.Html.dep
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\appsettings.Development.json
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\appsettings.json
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.exe
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.deps.json
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.runtimeconfig.json
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.runtimeconfig.dev.json
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.pdb
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Dapper.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\FluentFTP.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\MailKit.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Connections.Abstractions.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Connections.Client.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Connections.Common.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SignalR.Client.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SignalR.Client.Core.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SignalR.Common.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\MimeKit.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\MySql.Data.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\QRCoder.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Select.HtmlToPdf.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.GeneratedMSBuildEditorConfig.editorconfig
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.AssemblyInfoInputs.cache
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.AssemblyInfo.cs
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.CoreCompileInputs.cache
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cs
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cache
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\staticwebassets\DeliveryRoomWatcher.StaticWebAssets.Manifest.cache
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\staticwebassets\DeliveryRoomWatcher.StaticWebAssets.xml
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\scopedcss\bundle\DeliveryRoomWatcher.styles.css
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.RazorTargetAssemblyInfo.cache
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.pdb
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.genruntimeconfig.cache
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.AssemblyReference.cache
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\CorePush.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Aspose.PDF.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\System.Drawing.Common.dll
+F:\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\System.Drawing.Common.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Select.Html.dep
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.exe
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.deps.json
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.runtimeconfig.json
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.runtimeconfig.dev.json
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\DeliveryRoomWatcher.pdb
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Aspose.PDF.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\CorePush.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Dapper.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\FluentFTP.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\MailKit.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Connections.Abstractions.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Connections.Client.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Connections.Common.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SignalR.Client.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SignalR.Client.Core.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SignalR.Common.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\MimeKit.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\MySql.Data.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\QRCoder.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Select.HtmlToPdf.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\System.Drawing.Common.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\System.Drawing.Common.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.AssemblyReference.cache
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.AssemblyInfoInputs.cache
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.AssemblyInfo.cs
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.CoreCompileInputs.cache
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cs
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.MvcApplicationPartsAssemblyInfo.cache
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\staticwebassets\DeliveryRoomWatcher.StaticWebAssets.Manifest.cache
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\staticwebassets\DeliveryRoomWatcher.StaticWebAssets.xml
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\scopedcss\bundle\DeliveryRoomWatcher.styles.css
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.RazorTargetAssemblyInfo.cache
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.csproj.CopyComplete
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.dll
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.pdb
+D:\Project2022\premiere_server\DeliveryRoomWatcher\DeliveryRoomWatcher\obj\Debug\netcoreapp3.1\DeliveryRoomWatcher.genruntimeconfig.cache

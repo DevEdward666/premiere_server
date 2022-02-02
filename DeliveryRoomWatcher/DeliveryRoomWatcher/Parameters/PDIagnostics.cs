@@ -9,5 +9,8 @@ namespace DeliveryRoomWatcher.Parameters
     {
         public string premid { get; set; }
         public short offset { get; set; }
+        public class SearchProcedure {
+            public string procedure { get; set; }
+        }
     }
 }

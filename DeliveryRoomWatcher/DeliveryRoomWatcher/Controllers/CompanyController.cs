@@ -21,6 +21,12 @@ namespace DeliveryRoomWatcher.Controllers
         {
             return Ok(_company.CompanyLogo());
         }
+        [HttpPost]
+        [Route("api/company/getemployees")]
+        public ActionResult getemployees()
+        {
+            return Ok(_company.getemployees());
+        }
 
         [HttpPost]
         [Route("api/company/company-tagline")]

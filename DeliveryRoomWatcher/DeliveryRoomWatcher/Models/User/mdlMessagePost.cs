@@ -19,6 +19,15 @@ namespace DeliveryRoomWatcher.Models.User
             public virtual string from { get; set; }
             public virtual string to { get; set; }
             public virtual string img { get; set; }
+        }           
+        public class NotificationPostSpecified
+        {
+            public virtual string Notification { get; set; }
+            public virtual string from { get; set; }
+            public virtual string to { get; set; }
+            public virtual string connectionId { get; set; }
+            public virtual string img { get; set; }
         }
+    
     }
 }

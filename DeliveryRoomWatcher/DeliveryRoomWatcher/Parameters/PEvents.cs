@@ -64,11 +64,10 @@ namespace DeliveryRoomWatcher.Parameters
             [Display(Name = "EventID")]
             public long evid { get; set; }
             [Required]
-            [StringLength(30)]
             [Display(Name = "EventTitle")]
             public string evtitle { get; set; }
             [Required]
-            [StringLength(30)]
+        
             [Display(Name = "EventDesc")]
             public string evdesc { get; set; }
 
@@ -99,7 +98,16 @@ namespace DeliveryRoomWatcher.Parameters
             [Display(Name = "EventColor")]
             public string evcolor { get; set; }
         }
+        public class PEventByMonth
+        {
+            public string month { get; set; }
+            public string year { get; set; }
 
+        }
+        public class searchableDate { 
+        
+        public string searchdate { get; set; }
+        }
 
-    }
+        }
 }
