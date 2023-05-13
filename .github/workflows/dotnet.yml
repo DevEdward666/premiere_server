@@ -23,9 +23,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore premiere_server/blob/main/DeliveryRoomWatcher/DeliveryRoomWatcher/DeliveryRoomWatcher.csproj
     - name: Build
-      run: dotnet build "premiere_server/blob/main/DeliveryRoomWatcher/DeliveryRoomWatcher/DeliveryRoomWatcher.csproj" --no-restore
+      run: dotnet build premiere_server/blob/main/DeliveryRoomWatcher/DeliveryRoomWatcher/DeliveryRoomWatcher.csproj --no-restore
     - name: Publish
-      run: dotnet publish "premiere_server/blob/main/DeliveryRoomWatcher/DeliveryRoomWatcher/DeliveryRoomWatcher.csproj" -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      run: dotnet publish premiere_server/blob/main/DeliveryRoomWatcher/DeliveryRoomWatcher/DeliveryRoomWatcher.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
       with:
